@@ -3,9 +3,9 @@
  * @author emilysoueu
  */
 public class Mesa extends Service {
-    boolean statusMesa;
+    boolean statusMesa;//ocupa = true
     int qtdClientes;
-    double totalMesa;
+    double totalMesa;//conta da mesa
     int[] tempClientes;
     
     Mesa(int abertaQtd, int fechadaQtd,  int g, int qtdClientes, int totalMesa, boolean statusMesa ){
@@ -16,6 +16,21 @@ public class Mesa extends Service {
         this.tempClientes = new int[qtdClientes]; // controle de clientes na mesa
     }
     
+    void setqtdCliente(int qtd){
+        this.qtdClientes = qtd;
+    }
+    
+    int getqtdClientes(){
+        return this.qtdClientes;
+    }
+    
+    void setstatusMesa(boolean temp){
+        this.statusMesa = temp;
+    }
+    
+    boolean statusMesa(){
+        return this.statusMesa;
+    }
     
     
     

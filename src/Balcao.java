@@ -8,6 +8,8 @@ public class Balcao extends Service{
         super(aberta,fechada, g);
         
     }
+    
+    
    
     
 }

@@ -4,7 +4,7 @@
  * @author emilysoueu
  */
 import java.util.ArrayList;
-public class Service extends Restaurante{
+public class Service {
      ArrayList<Clientes> listaCliente;
      int totalFechado;
      int totalAberto;
@@ -24,5 +24,7 @@ public class Service extends Restaurante{
      void calcularContas(){
          
      }
+     
+      
     
 }
