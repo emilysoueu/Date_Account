@@ -4,12 +4,15 @@
  */
 public class Item {
     int numItem;
-    double valor;
+    int qtdItem;
+    double valorUni;
+    double valorTot;
     
-    Item(int pedido, double valor){
+    Item(int numItem, int qtdItem){
         this.numItem = numItem;
-        this.valor = valor;
-        
+        this.qtdItem = qtdItem;
+        double valorUni;
+        double valorTot;
     }
     
 }

@@ -1,13 +1,13 @@
 /**
- 
+ *
  * @author emilysoueu
  */
-public class Balcao extends Service{
+public class Mesa extends Service {
     
-    Balcao(int aberta, int fechada){
+    
+    Mesa(int aberta, int fechada){
         super(aberta,fechada);
         
     }
-   
     
 }

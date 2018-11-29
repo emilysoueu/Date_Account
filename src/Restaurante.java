@@ -8,6 +8,10 @@
  *
  * @author emilysoueu
  */
+import java.util.ArrayList;
 public class Restaurante {
+    int[] garcom = new int[3];
+    ArrayList<Mesa> listaMesa; // 5 mesas - capacidade
+    Balcao bar;
     
 }

@@ -6,16 +6,16 @@
 import java.util.ArrayList;
 public class Clientes {
     boolean statusConta;
-    ArrayList<Integer> pedido;
+    ArrayList<Item> listaItens;
     int garcom;
     
    public Clientes(boolean statusConta, int garcom){
        this.statusConta = statusConta;
        this.garcom = garcom; 
-       this.pedido = new ArrayList<>();
+       this.listaItens = new ArrayList<>();
    } 
     
-    // ============================métodos=============================//
+    // ============================métodos===============================//
     
     void addPedido(){
         
