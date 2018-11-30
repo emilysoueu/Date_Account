@@ -126,26 +126,29 @@ public class Restaurante {
 
         return t;
     }
-    
+
     Scanner in = new Scanner(System.in);
 
     public void menu() {
         int menu;
-        
+
         System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados............");
         System.out.println(".............Atendimento........................................:");
         System.out.println(".............[1]Mesa.............................................");
         System.out.println(".............[2]Balcao...........................................");
         menu = in.nextInt();
-        
-        switch(menu){
+
+        switch (menu) {
             // atendimento em mesa
-            case 1:{
-                int entrada; // recebe pedidos do cliente
+            case 1: {
                 int qtdCliente;
                 int garcom;
                 int numMesa;
-                
+
+                int numItem; // recebe pedidos do cliente
+                int qtdItem;
+                int valorUni;
+
                 System.out.println("Informe a quantidade de Clientes na mesa:");
                 qtdCliente = in.nextInt();
                 System.out.println("Informe o numero do garçom para atendê - lo:");
@@ -153,35 +156,39 @@ public class Restaurante {
                 System.out.println("Informe o numero da mesa:");
                 numMesa = in.nextInt();
                 this.abrirContaMesa(qtdCliente, garcom, numMesa);
-                
-                for(int i=0; i<qtdCliente; i++){
-                    
-                    do{
-                        System.out.println("Numero do pedido: ");
+
+                Mesa atual = this.listaMesa.get(numMesa - 1);
+
+                //.tempClientes.add(c);
+                for (Clientes aux : atual.tempClientes) {
+
+                    do {
+                        System.out.println("Numero do item: ");
+                        numItem = in.nextInt();
+
+                        System.out.println("Quantidade do item: ");
+                        qtdItem = in.nextInt();
                         
-                        entrada = in.nextInt();                     
-                       
-                    } while(entrada != 0);
+                        System.out.println("Qual o valor unitário do item: ");
+                        valorUni = in.nextInt();                    
                         
-                 
-                    
-                    
+                        aux.addPedido(numItem, qtdItem, valorUni);                        
+
+                    } while (numItem != 0);
+
                 }
-                
-                          
-                
+
             }
             // atendimmento em balcao
-            case 2:{
+            case 2: {
                 int garcom;
-                
-               System.out.println("Informe o numero do garçom para atendê-lo:");
-               garcom = in.nextInt();
-               this.abrirContaBalcao(garcom); // informar numero do garçom         
-               
-                
-            }            
-        }              
+
+                System.out.println("Informe o numero do garçom para atendê-lo:");
+                garcom = in.nextInt();
+                this.abrirContaBalcao(garcom); // informar numero do garçom         
+
+            }
+        }
 
     }
 
