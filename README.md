@@ -12,9 +12,9 @@ o Inserir/Cancelar itens na conta
 
 o Totalizar conta
 
-§ Somar despesas da mesa/cliente
+o Somar despesas da mesa/cliente
 
-§ Calcular gorjeta
+o Calcular gorjeta
 
 o Emitir relatório de contas em aberto (em atendimento)
 
