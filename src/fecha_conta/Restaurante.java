@@ -8,18 +8,21 @@ import java.util.ArrayList;
 
 public class Restaurante {
 
-    double[] garcommatriz;
-    ArrayList<Mesa> listaMesa; // 5 mesas - capacidade
+    ArrayList<Mesa> listaMesa;
+    double[] matrizGarcom;
+    double[] matrizCardapio;
     Balcao bar;
-    int[] cardapio;// 5 itens pra teste
 
-    public Restaurante() {
-        this.garcommatriz = new double[3];
-        this.listaMesa = new ArrayList<>();
-        this.bar = new Balcao(0, 0, 0); // averiguar isso aqui
-        this.cardapio = new int[3];
+    public Restaurante(int numGarcom, int NumItens, int numMesas) {
+        this.listaMesa = new ArrayList<>(); //declaração e instanciamento do arraylist listaMesa
+        this.matrizGarcom = new double[numGarcom]; //declaração e instanciamento da matriz matrizGarcom
+        this.matrizCardapio = new double[NumItens]; //declaração e instanciamento da matriz matrizCardapio
 
-        for (int i = 0; i < 5; i++) {
+        //instanciando o objeto bar do tipo balcao
+        this.bar = new Balcao(0, 0, 0); // averiguar isso aqui        
+
+        //instanciando a quantidade "numMesas" de objetos do tipo Mesa e adicionando na listaMesa
+        for (int i = 0; i < numMesas; i++) {
             this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, true));
         }
     }
@@ -29,9 +32,9 @@ public class Restaurante {
         System.out.println(" Item 2 ---- $200");
         System.out.println(" Item 3 ---- $500");
 
-        this.cardapio[0] = 1;
-        this.cardapio[1] = 200;
-        this.cardapio[2] = 500;
+        this.matrizCardapio[0] = 1;
+        this.matrizCardapio[1] = 200;
+        this.matrizCardapio[2] = 500;
     }
 
     /*void criarBalcao(int aberta, int fechada, int g) {
@@ -41,8 +44,28 @@ public class Restaurante {
     void criarMesa(int abertaQtd, int fechadaQtd, int g, int qtdClientes, int totalMesa, boolean statusMesa) {
          listaMesa.add(new Mesa(abertaQtd, fechadaQtd,  g,  qtdClientes,  totalMesa,  statusMesa));
     }*/
-    void addvalor(int indice, double valor) {
-        this.garcommatriz[indice - 1] = valor;
+    public Balcao getBar() {
+        return bar;
+    }
+
+    public void setBar(Balcao bar) {
+        this.bar = bar;
+    }
+
+    public double getValorGarcomMatriz(int indice) {
+        return this.matrizGarcom[indice - 1];
+    }
+
+    void setValorGarcomMatriz(int indice, double valor) {
+        this.matrizGarcom[indice - 1] = valor;
+    }
+
+    public double getValorCardapio(int indice) {
+        return this.matrizCardapio[indice - 1];
+    }
+
+    public void setValorCardapio(int indice, double valor) {
+        this.matrizCardapio[indice - 1] = valor;
     }
 
     void abrirContaBalcao(int garcom) {
@@ -65,7 +88,7 @@ public class Restaurante {
     void fecharContaMesa(int numMesa) {
         Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
 
-        System.out.println("Total da Mesa: " + mesaAtual.getTotal());
+        System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
 
         for (int i = 0; i < mesaAtual.tempClientes.size(); i++) {
             System.out.println("Total por Cliente" + i + ": " + mesaAtual.tempClientes.get(i).total);
