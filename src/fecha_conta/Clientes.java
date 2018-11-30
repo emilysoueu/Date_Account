@@ -22,9 +22,9 @@ public class Clientes {
     }
 
     // ============================métodos===============================//
-    public void addPedido(Item aux) {
-        this.listaItens.add(aux);
-
+    public void addPedido(int numItem, int qtdItem, int valorUni) {
+        Item item = new Item(numItem, qtdItem, valorUni, qtdItem * valorUni);
+        this.listaItens.add(item);
     }
 
     public void delItem(int itemtemp) {
