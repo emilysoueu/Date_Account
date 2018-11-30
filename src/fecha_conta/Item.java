@@ -14,8 +14,8 @@ public class Item {
     Item(int numItem, int qtdItem) {
         this.numItem = numItem;
         this.qtdItem = qtdItem;
-        double valorUni;
-        double valorTot;
+        //double valorUni;
+        //double valorTot;
     }
 
 }
