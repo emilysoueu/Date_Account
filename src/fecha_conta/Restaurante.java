@@ -57,7 +57,7 @@ public class Restaurante {
         return this.matrizGarcom[indice - 1];
     }
 
-    void setValorGarcomMatriz(int indice, double valor) {
+    public void setValorGarcomMatriz(int indice, double valor) {
         this.matrizGarcom[indice - 1] = valor;
     }
 
@@ -69,17 +69,19 @@ public class Restaurante {
         this.matrizCardapio[indice - 1] = valor;
     }
 
-    public void abrirContaBalcao(int garcom) {
+    public Clientes abrirContaBalcao(int garcom) {
         Clientes c = new Clientes(true, garcom);
         this.bar.listaCliente.add(c);
+        return c;
     }
 
-    public void abrirContaMesa(int qtdClientes, int garcom, int numMesa) {
+    public Mesa abrirContaMesa(int qtdClientes, int garcom, int numMesa) {
         for (int i = 0; i < qtdClientes; i++) {
             Clientes c = new Clientes(true, garcom);
             this.listaMesa.get(numMesa - 1).listaCliente.add(c);
             this.listaMesa.get(numMesa - 1).tempClientes.add(c);
         }
+        return this.listaMesa.get(numMesa - 1);
     }
 
     public void fecharContaBalcao(int numCliente) {
@@ -155,12 +157,10 @@ public class Restaurante {
                 garcom = in.nextInt();
                 System.out.println("Informe o numero da mesa:");
                 numMesa = in.nextInt();
-                this.abrirContaMesa(qtdCliente, garcom, numMesa);
 
-                Mesa atual = this.listaMesa.get(numMesa - 1);
+                Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
 
-                //.tempClientes.add(c);
-                for (Clientes aux : atual.tempClientes) {
+                for (Clientes aux : xMesa.tempClientes) {
 
                     do {
                         System.out.println("Numero do item: ");
@@ -168,11 +168,11 @@ public class Restaurante {
 
                         System.out.println("Quantidade do item: ");
                         qtdItem = in.nextInt();
-                        
+
                         System.out.println("Qual o valor unitário do item: ");
-                        valorUni = in.nextInt();                    
-                        
-                        aux.addPedido(numItem, qtdItem, valorUni);                        
+                        valorUni = in.nextInt();
+
+                        aux.addPedido(numItem, qtdItem, valorUni);
 
                     } while (numItem != 0);
 
@@ -183,13 +183,32 @@ public class Restaurante {
             case 2: {
                 int garcom;
 
+                int numItem; // recebe pedidos do cliente
+                int qtdItem;
+                int valorUni;
+
                 System.out.println("Informe o numero do garçom para atendê-lo:");
                 garcom = in.nextInt();
-                this.abrirContaBalcao(garcom); // informar numero do garçom         
+                this.abrirContaBalcao(garcom); // informar numero do garçom
+
+                Clientes xCliente = this.abrirContaBalcao(garcom);
+                do {
+                    System.out.println("Numero do item: ");
+                    numItem = in.nextInt();
+
+                    System.out.println("Quantidade do item: ");
+                    qtdItem = in.nextInt();
+
+                    System.out.println("Qual o valor unitário do item: ");
+                    valorUni = in.nextInt();
+
+                    xCliente.addPedido(numItem, qtdItem, valorUni);
+
+                } while (numItem != 0);
 
             }
-        }
 
+        }
     }
 
 }
