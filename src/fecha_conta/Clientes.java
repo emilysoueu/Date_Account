@@ -22,20 +22,18 @@ public class Clientes {
     }
 
     // ============================métodos===============================//
-    void addPedido(Item aux) {
+    public void addPedido(Item aux) {
         this.listaItens.add(aux);
 
     }
 
-    void delItem(int itemtemp) {
+    public void delItem(int itemtemp) {
         for (Item aux : this.listaItens) {
             if (itemtemp == aux.numItem) {
                 this.listaItens.remove(aux);
             }
         }
     }
-
-    
 
     public boolean getStatusConta() {
         return statusConta;
@@ -44,7 +42,6 @@ public class Clientes {
     /*public void setStatusConta(boolean statusConta) {
         this.statusConta = statusConta;
     }*/
-    
     public void fecharContaCliente() {
         this.statusConta = false;
     }
@@ -64,7 +61,5 @@ public class Clientes {
     public void setTotal(double total) {
         this.total = total;
     }
-    
-    
 
 }
