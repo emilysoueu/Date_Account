@@ -23,27 +23,31 @@ public class Mesa extends Service {
         this.tempClientes = new ArrayList<>();
     }
 
-    void setqtdCliente(int qtd) {
-        this.qtdClientes = qtd;
+    public boolean getStatusMesa() {
+        return statusMesa;
     }
 
-    int getqtdClientes() {
-        return this.qtdClientes;
+    public void setStatusMesa(boolean statusMesa) {
+        this.statusMesa = statusMesa;
     }
 
-    void setstatusMesa(boolean temp) {
-        this.statusMesa = temp;
+    public int getQtdClientes() {
+        return qtdClientes;
     }
 
-    boolean statusMesa() {
-        return this.statusMesa;
+    public void setQtdClientes(int qtdClientes) {
+        this.qtdClientes = qtdClientes;
     }
 
-    double getTotal() {
+    public double getTotalMesa() {
+        return totalMesa;
+    }
+
+    public void setTotalMesa(double totalMesa) {
         for (Clientes temp : tempClientes) {
             this.totalMesa += temp.total;
         }
-        return totalMesa;
+        this.totalMesa = totalMesa;
     }
 
 }
