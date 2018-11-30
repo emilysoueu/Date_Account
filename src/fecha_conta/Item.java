@@ -2,19 +2,20 @@ package fecha_conta;
 
 /**
  *
- * @author emilysoueu
+ * @author emilysoueu, fernandodojo, kellyberreca
  */
 public class Item {
+
     int numItem;
     int qtdItem;
     double valorUni;
     double valorTot;
-    
-    Item(int numItem, int qtdItem){
+
+    Item(int numItem, int qtdItem) {
         this.numItem = numItem;
         this.qtdItem = qtdItem;
         double valorUni;
         double valorTot;
     }
-    
+
 }
