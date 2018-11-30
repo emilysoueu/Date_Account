@@ -50,4 +50,12 @@ public class Mesa extends Service {
         this.totalMesa = totalMesa;
     }
 
+    public void print() {
+        int i = 1;
+        for (Clientes aux : tempClientes) {
+            System.out.println("Numero do Cliente:" + i++);
+            aux.print();
+        }
+    }
+
 }

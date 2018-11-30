@@ -22,7 +22,7 @@ public class Clientes {
     }
 
     // ============================métodos===============================//
-    public void addPedido(int numItem, int qtdItem, int valorUni) {
+    public void addPedido(int numItem, int qtdItem, double valorUni) {
         Item item = new Item(numItem, qtdItem, valorUni, qtdItem * valorUni);
         this.listaItens.add(item);
     }
@@ -60,6 +60,18 @@ public class Clientes {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public void print() {
+        int i = 1;
+        for (Item aux : this.listaItens) {
+            System.out.println("Pedido Numero:" + i++);
+            System.out.println("Numero de items: " + aux.numItem);
+            System.out.println("Quantidade de items: " + aux.qtdItem);
+            System.out.println("Valor Unitário: " + aux.valorUni);
+            System.out.println("Valor Total: " + aux.valorTot);
+            System.out.println("");
+        }
     }
 
 }

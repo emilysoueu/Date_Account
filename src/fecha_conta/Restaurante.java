@@ -149,7 +149,7 @@ public class Restaurante {
 
                 int numItem; // recebe pedidos do cliente
                 int qtdItem;
-                int valorUni;
+                double valorUni;
 
                 System.out.println("Informe a quantidade de Clientes na mesa:");
                 qtdCliente = in.nextInt();
@@ -163,14 +163,18 @@ public class Restaurante {
                 for (Clientes aux : xMesa.tempClientes) {
 
                     do {
-                        System.out.println("Numero do item: ");
+                        System.out.println("Numero do item(0 para encerar pedido) : ");
                         numItem = in.nextInt();
+
+                        if (numItem == 0) {
+                            break;
+                        }
 
                         System.out.println("Quantidade do item: ");
                         qtdItem = in.nextInt();
 
                         System.out.println("Qual o valor unitário do item: ");
-                        valorUni = in.nextInt();
+                        valorUni = in.nextDouble();
 
                         aux.addPedido(numItem, qtdItem, valorUni);
 
@@ -178,6 +182,9 @@ public class Restaurante {
 
                 }
 
+                System.out.println("### MESA ATENDIDA ###");
+                xMesa.print();
+                break;
             }
             // atendimmento em balcao
             case 2: {
@@ -185,7 +192,7 @@ public class Restaurante {
 
                 int numItem; // recebe pedidos do cliente
                 int qtdItem;
-                int valorUni;
+                double valorUni;
 
                 System.out.println("Informe o numero do garçom para atendê-lo:");
                 garcom = in.nextInt();
@@ -193,19 +200,26 @@ public class Restaurante {
 
                 Clientes xCliente = this.abrirContaBalcao(garcom);
                 do {
-                    System.out.println("Numero do item: ");
+                    System.out.println("Numero do item(0 para encerar pedido) : ");
                     numItem = in.nextInt();
+
+                    if (numItem == 0) {
+                        break;
+                    }
 
                     System.out.println("Quantidade do item: ");
                     qtdItem = in.nextInt();
 
                     System.out.println("Qual o valor unitário do item: ");
-                    valorUni = in.nextInt();
+                    valorUni = in.nextDouble();
 
                     xCliente.addPedido(numItem, qtdItem, valorUni);
 
                 } while (numItem != 0);
 
+                System.out.println("### CLIENTE ATENDIDO ###");
+                xCliente.print();
+                break;
             }
 
         }
