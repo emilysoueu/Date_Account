@@ -35,8 +35,36 @@ public class Clientes {
         }
     }
 
-    void fecharContaCliente() {
+    
+
+    public boolean getStatusConta() {
+        return statusConta;
+    }
+
+    /*public void setStatusConta(boolean statusConta) {
+        this.statusConta = statusConta;
+    }*/
+    
+    public void fecharContaCliente() {
         this.statusConta = false;
     }
+
+    public int getGarcom() {
+        return garcom;
+    }
+
+    public void setGarcom(int garcom) {
+        this.garcom = garcom;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    
 
 }
