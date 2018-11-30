@@ -3,7 +3,7 @@ package fecha_conta;
 
 /**
  *
- * @author emilysoueu
+ * @author emilysoueu, fernandodojo, kellyberreca
  */
 public class Main {
     
