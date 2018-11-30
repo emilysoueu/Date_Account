@@ -68,12 +68,12 @@ public class Restaurante {
         this.matrizCardapio[indice - 1] = valor;
     }
 
-    void abrirContaBalcao(int garcom) {
+    public void abrirContaBalcao(int garcom) {
         Clientes c = new Clientes(true, garcom);
         this.bar.listaCliente.add(c);
     }
 
-    void abrirContaMesa(int qtdClientes, int garcom, int numMesa) {
+    public void abrirContaMesa(int qtdClientes, int garcom, int numMesa) {
         for (int i = 0; i < qtdClientes; i++) {
             Clientes c = new Clientes(true, garcom);
             this.listaMesa.get(numMesa - 1).listaCliente.add(c);
@@ -81,11 +81,11 @@ public class Restaurante {
         }
     }
 
-    void fecharContaBalcao(int numCliente) {
+    public void fecharContaBalcao(int numCliente) {
         this.bar.listaCliente.get(numCliente - 1).fecharContaCliente();
     }
 
-    void fecharContaMesa(int numMesa) {
+    public void fecharContaMesa(int numMesa) {
         Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
 
         System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
@@ -100,7 +100,7 @@ public class Restaurante {
         mesaAtual.totalMesa = 0;
     }
 
-    int getTotalAberto() {
+    public int getTotalAberto() {
         int t = 0;
 
         for (Mesa aux : listaMesa) {
@@ -113,7 +113,7 @@ public class Restaurante {
         return t;
     }
 
-    int getTotalFechado() {
+    public int getTotalFechado() {
         int t = 0;
 
         for (Mesa aux : listaMesa) {
