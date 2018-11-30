@@ -20,23 +20,18 @@ public class Service {
         this.garcom = garcom;
     }
 
-    /**
-     * @return the garcom
-     */
     public int getGarcom() {
         return garcom;
     }
 
-    /**
-     * @param garcom the garcom to set
-     */
     public void setGarcom(int garcom) {
         this.garcom = garcom;
     }
 
-    /**
-     * @param totalAberto the totalAberto to set
-     */
+    public int getTotalAberto() {
+        return this.totalAberto;
+    }
+
     public void setTotalAberto() {
         int t = 0;
         for (Clientes aux : listaCliente) {
@@ -47,13 +42,6 @@ public class Service {
         this.totalAberto = t;
     }
 
-    int getTotalAberto() {
-        return this.totalAberto;
-    }
-
-    /**
-     * @param totalFechado the totalFechado to set
-     */
     public void setTotalFechado() {
         int t = 0;
         for (Clientes aux : listaCliente) {
@@ -64,10 +52,8 @@ public class Service {
         this.totalFechado = t;
     }
 
-    /**
-     * @return the totalFechado
-     */
     public int getTotalFechado() {
         return totalFechado;
     }
+
 }
