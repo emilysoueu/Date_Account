@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Service {
 
     ArrayList<Clientes> listaCliente;
-    int totalFechado;
-    int totalAberto;
+    int totalFechado; // contas em aberto
+    int totalAberto; // contas fechadas
     int garcom;
 
     public Service(int totalFechado, int totalAberto, int garcom) {

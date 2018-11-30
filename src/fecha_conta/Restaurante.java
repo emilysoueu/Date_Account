@@ -5,6 +5,7 @@ package fecha_conta;
  * @author emilysoueu, fernandodojo, kellyberreca
  */
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Restaurante {
 
@@ -124,6 +125,64 @@ public class Restaurante {
         t += bar.getTotalFechado();
 
         return t;
+    }
+    
+    Scanner in = new Scanner(System.in);
+
+    public void menu() {
+        int menu;
+        
+        System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados............");
+        System.out.println(".............Atendimento........................................:");
+        System.out.println(".............[1]Mesa.............................................");
+        System.out.println(".............[2]Balcao...........................................");
+        menu = in.nextInt();
+        
+        switch(menu){
+            // atendimento em mesa
+            case 1:{
+                int entrada; // recebe pedidos do cliente
+                int qtdCliente;
+                int garcom;
+                int numMesa;
+                
+                System.out.println("Informe a quantidade de Clientes na mesa:");
+                qtdCliente = in.nextInt();
+                System.out.println("Informe o numero do garçom para atendê - lo:");
+                garcom = in.nextInt();
+                System.out.println("Informe o numero da mesa:");
+                numMesa = in.nextInt();
+                this.abrirContaMesa(qtdCliente, garcom, numMesa);
+                
+                for(int i=0; i<qtdCliente; i++){
+                    
+                    do{
+                        System.out.println("Numero do pedido: ");
+                        
+                        entrada = in.nextInt();                     
+                       
+                    } while(entrada != 0);
+                        
+                 
+                    
+                    
+                }
+                
+                          
+                
+            }
+            // atendimmento em balcao
+            case 2:{
+                int garcom;
+                
+               System.out.println("Informe o numero do garçom para atendê-lo:");
+               garcom = in.nextInt();
+               this.abrirContaBalcao(garcom); // informar numero do garçom         
+               
+                
+            }            
+        }              
+
     }
 
 }
