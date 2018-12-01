@@ -32,10 +32,13 @@ public class Mesa extends Service {
     }
 
     public void fecharContaMesa() {
-        this.statusMesa = false;
         this.setTotalMesa();
         this.printMesa();
         System.out.println("Valor Total:" + this.totalMesa);
+
+        this.tempClientes.clear();
+        this.statusMesa = false;
+        this.totalMesa = 0;
     }
 
     public int getQtdClientes() {
