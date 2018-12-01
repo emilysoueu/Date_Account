@@ -29,7 +29,7 @@ public class Clientes {
 
     public void delItem(int itemtemp) {
         for (Item aux : this.listaItens) {
-            if (itemtemp == aux.numItem) {
+            if (itemtemp == aux.getNumItem()) {
                 this.listaItens.remove(aux);
             }
         }
@@ -44,9 +44,9 @@ public class Clientes {
     }*/
     public void fecharContaCliente() {
         this.statusConta = false;
-        this.total = this.setTotal();
+        this.setTotal();
         this.printCliente();
-        System.out.println("Valor Total:" + this.getTotal());
+        System.out.println("Valor Total:" + this.total);
     }
 
     public int getGarcom() {
@@ -61,28 +61,24 @@ public class Clientes {
         return total;
     }
 
-    public double setTotal() {
+    public void setTotal() {
         for (Item aux : this.listaItens) {
             this.total += aux.getValorTot();
         }
-        return this.total;
     }
 
     public void printCliente() {
-
-        System.out.println("Numero do Garcom: " + this.getGarcom());
-        System.out.println("Conta em Aberto: " + this.getStatusConta());
-        //System.out.println("Valor Total: " + this.getTotal());
-        System.out.println("");
-
+        System.out.println("Numero do Garcom: " + this.garcom);
+        System.out.println("Conta em Aberto: " + this.statusConta);
     }
 
     public void printPedido() {
         int i = 1;
+        System.out.println("");
         for (Item aux : this.listaItens) {
             System.out.println("PEDIDO NUMERO:" + i++);
             aux.printItem();
-            System.out.println("");
+//            System.out.println("");
         }
     }
 
