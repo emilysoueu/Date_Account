@@ -176,6 +176,8 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     void menuBalcao() {
         int garcom;
+        int pessoa;
+        Balcao bar = null;
         do {
             int numItem; // recebe pedidos do cliente
             int qtdItem;
@@ -213,8 +215,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println("............[0]NÃO.........................");
             int edit = in.nextInt();
             switch (edit) {
+               
                 case 1: {
-                    int pedido;
+                    System.out.println("\n................Informe o Cliente que deseja alterar pedido:");
+                    pessoa = in.nextInt();
+                    int pedido, del;
                     System.out.println("............[1]Adicionar Pedido ...................");
                     System.out.println("............[2]Deletar Item Pedido.................");
                     pedido = in.nextInt();
@@ -225,6 +230,10 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         }
                         break;
                         case 2: {
+                            
+                            System.out.println("\n..............Informe o numero do Item:......");
+                            del = in.nextInt();
+                            bar.clienteDelItem(pessoa, del);
 
                         }
                         break;
