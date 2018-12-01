@@ -38,13 +38,6 @@ public class Restaurante {
         this.matrizCardapio[2] = 500;
     }
 
-    /*void criarBalcao(int aberta, int fechada, int g) {
-        Balcao b = new Balcao(aberta, fechada, g);
-    }
-
-    void criarMesa(int abertaQtd, int fechadaQtd, int g, int qtdClientes, int totalMesa, boolean statusMesa) {
-         listaMesa.add(new Mesa(abertaQtd, fechadaQtd,  g,  qtdClientes,  totalMesa,  statusMesa));
-    }*/
     public Balcao getBar() {
         return bar;
     }
@@ -90,7 +83,10 @@ public class Restaurante {
     }
 
     public void fecharContaBalcao(int numCliente) {
-        this.bar.listaCliente.get(numCliente - 1).fecharContaCliente();
+        Clientes atual = this.bar.listaCliente.get(numCliente - 1);
+        atual.fecharContaCliente();
+        int numGarcom = atual.getGarcom();
+        matrizGarcom[numGarcom - 1] += atual.getGorjeta();
     }
 
     public void fecharContaMesa(int numMesa) {
@@ -102,6 +98,8 @@ public class Restaurante {
         for (Clientes aux : mesaAtual.tempClientes) {
             System.out.println("Cliente: " + i);
             aux.fecharContaCliente();
+            int numGarcom = aux.getGarcom();
+            matrizGarcom[numGarcom - 1] += aux.getGorjeta();
         }
 
         mesaAtual.fecharContaMesa();
@@ -146,6 +144,42 @@ public class Restaurante {
         t += bar.getTotalFechado();
 
         return t;
+    }
+
+    //o Emitir relatório de contas em aberto (em atendimento)
+    public void relatorioAberto() {
+        System.out.println("CONTAS EM ABERTO - BALCAO");
+        bar.relatorioAberto();
+        System.out.println("");
+
+        System.out.println("CONTAS EM ABERTO - MESA");
+        int i = 1;
+        for (Mesa aux : this.listaMesa) {
+            System.out.println("MESA Nº: " + i++);
+            aux.relatorioAberto();
+            System.out.println("");
+        }
+    }
+
+    //o Emitir total apurado no dia
+    public void relatorioFinal() {
+        System.out.println("RELATORIO BALCAO:");
+        System.out.println(bar.getGorjeta());
+        System.out.println("");
+
+        System.out.println("RELATORIO POR MESA:");
+        int i = 1;
+        for (Mesa aux : this.listaMesa) {
+            System.out.println("Gorjeta Mesa" + i++ + ": " + aux.getGorjeta());
+            System.out.println("");
+        }
+    }
+
+    //o Emitir relatório de gorjetas por garçom
+    public void relatorioGarcom() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Gorjeta Garcom Nº" + i + 1 + ": " + matrizGarcom[i]);
+        }
     }
 
 }
