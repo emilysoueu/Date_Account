@@ -98,6 +98,21 @@ public class Restaurante {
 
         System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
 
+        int i = 1;
+        for (Clientes aux : mesaAtual.tempClientes) {
+            System.out.println("Cliente: " + i);
+            aux.fecharContaCliente();
+        }
+
+        mesaAtual.fecharContaMesa();
+
+    }
+
+    /*public void fecharContaMesa(int numMesa) {
+        Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
+
+        System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
+
         for (int i = 0; i < mesaAtual.tempClientes.size(); i++) {
             System.out.println("Total por Cliente" + i + ": " + mesaAtual.tempClientes.get(i).total);
             mesaAtual.tempClientes.get(i).fecharContaCliente();
@@ -106,8 +121,7 @@ public class Restaurante {
         mesaAtual.tempClientes.clear();
         mesaAtual.statusMesa = false;
         mesaAtual.totalMesa = 0;
-    }
-
+    }*/
     public int getTotalAberto() {
         int t = 0;
 
