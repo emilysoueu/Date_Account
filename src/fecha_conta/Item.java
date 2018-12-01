@@ -6,10 +6,10 @@ package fecha_conta;
  */
 public class Item {
 
-    int numItem;
-    int qtdItem;
-    double valorUni;
-    double valorTot;
+    private int numItem;
+    private int qtdItem;
+    private double valorUni;
+    private double valorTot;
 
     Item(int numItem, int qtdItem, double valorUni, double valorTot) {
         this.numItem = numItem;
@@ -47,14 +47,14 @@ public class Item {
     }
 
     public void setValorTot() {
-        this.valorTot = this.getNumItem()*this.getValorUni();
+        this.valorTot = this.numItem * this.valorUni;
     }
 
     public void printItem() {
-        System.out.println("Numero do item: " + this.getNumItem());
-        System.out.println("Quantidade do item: " + this.getQtdItem());
-        System.out.println("Valor Unitário: " + getValorUni());
-        System.out.println("Valor Total: " + getValorTot());
+        System.out.println("Numero do item: " + this.numItem);
+        System.out.println("Quantidade do item: " + this.qtdItem);
+        System.out.println("Valor Unitário: " + this.valorUni);
+        System.out.println("Valor Total: " + this.valorTot);
         System.out.println("");
     }
 
