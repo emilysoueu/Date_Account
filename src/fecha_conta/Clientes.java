@@ -46,8 +46,10 @@ public class Clientes {
     public void fecharContaCliente() {
         this.statusConta = false;
         this.setTotal();
+        this.getGorjeta();
         this.printCliente();
         System.out.println("Valor Total:" + this.total);
+        System.out.println("Gorjeta: "+ this.gorjeta);
     }
 
     public int getGarcom() {
@@ -71,6 +73,7 @@ public class Clientes {
     public void printCliente() {
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Conta em Aberto: " + this.statusConta);
+        System.out.println("Quantidade de Pedidos: "+ this.listaItens.size());        
     }
 
     public void printPedido() {
