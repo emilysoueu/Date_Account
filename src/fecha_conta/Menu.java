@@ -215,7 +215,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println("............[0]NÃO.........................");
             int edit = in.nextInt();
             switch (edit) {
-               
+
                 case 1: {
                     System.out.println("\n................Informe o Cliente que deseja alterar pedido:");
                     pessoa = in.nextInt();
@@ -230,7 +230,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         }
                         break;
                         case 2: {
-                            
+
                             System.out.println("\n..............Informe o numero do Item:......");
                             del = in.nextInt();
                             bar.clienteDelItem(pessoa, del);
