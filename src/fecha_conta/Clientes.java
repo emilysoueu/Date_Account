@@ -44,6 +44,9 @@ public class Clientes {
     }*/
     public void fecharContaCliente() {
         this.statusConta = false;
+        this.total = this.setTotal();
+        this.printCliente();
+        System.out.println("Valor Total:" + this.getTotal());
     }
 
     public int getGarcom() {
@@ -58,18 +61,27 @@ public class Clientes {
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public double setTotal() {
+        for (Item aux : this.listaItens) {
+            this.total += aux.getValorTot();
+        }
+        return this.total;
     }
 
-    public void print() {
+    public void printCliente() {
+
+        System.out.println("Numero do Garcom: " + this.getGarcom());
+        System.out.println("Conta em Aberto: " + this.getStatusConta());
+        //System.out.println("Valor Total: " + this.getTotal());
+        System.out.println("");
+
+    }
+
+    public void printPedido() {
         int i = 1;
         for (Item aux : this.listaItens) {
-            System.out.println("Pedido Numero:" + i++);
-            System.out.println("Numero de items: " + aux.numItem);
-            System.out.println("Quantidade de items: " + aux.qtdItem);
-            System.out.println("Valor Unitário: " + aux.valorUni);
-            System.out.println("Valor Total: " + aux.valorTot);
+            System.out.println("PEDIDO NUMERO:" + i++);
+            aux.printItem();
             System.out.println("");
         }
     }
