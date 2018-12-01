@@ -16,14 +16,14 @@ public class Restaurante {
 
     public Restaurante(int numGarcom, int NumItens, int numMesas) {
         this.listaMesa = new ArrayList<>(); //declaração e instanciamento do arraylist listaMesa
-        this.matrizGarcom = new double[numGarcom]; //declaração e instanciamento da matriz matrizGarcom
-        this.matrizCardapio = new double[NumItens]; //declaração e instanciamento da matriz matrizCardapio
+        this.matrizGarcom = new double[5/*numGarcom*/]; //declaração e instanciamento da matriz matrizGarcom
+        this.matrizCardapio = new double[5/*NumItens*/]; //declaração e instanciamento da matriz matrizCardapio
 
         //instanciando o objeto bar do tipo balcao
         this.bar = new Balcao(0, 0, 0); // averiguar isso aqui        
 
         //instanciando a quantidade "numMesas" de objetos do tipo Mesa e adicionando na listaMesa
-        for (int i = 0; i < numMesas; i++) {
+        for (int i = 0; i < 10/*numMesas*/; i++) {
             this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, true));
         }
     }
@@ -76,12 +76,17 @@ public class Restaurante {
     }
 
     public Mesa abrirContaMesa(int qtdClientes, int garcom, int numMesa) {
+        Mesa atual = this.listaMesa.get(numMesa - 1);
+
+        atual.setGarcom(garcom);
+        atual.setQtdClientes(qtdClientes);
+
         for (int i = 0; i < qtdClientes; i++) {
             Clientes c = new Clientes(true, garcom);
-            this.listaMesa.get(numMesa - 1).listaCliente.add(c);
-            this.listaMesa.get(numMesa - 1).tempClientes.add(c);
+            atual.listaCliente.add(c);
+            atual.tempClientes.add(c);
         }
-        return this.listaMesa.get(numMesa - 1);
+        return atual;
     }
 
     public void fecharContaBalcao(int numCliente) {
@@ -159,6 +164,8 @@ public class Restaurante {
                 numMesa = in.nextInt();
 
                 Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
+                xMesa.setGarcom(garcom);
+                xMesa.setQtdClientes(qtdCliente);
 
                 for (Clientes aux : xMesa.tempClientes) {
 
