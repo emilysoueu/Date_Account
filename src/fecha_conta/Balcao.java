@@ -6,8 +6,8 @@ package fecha_conta;
  */
 public class Balcao extends Service {
 
-    Balcao(int aberta, int fechada, int g) {
-        super(aberta, fechada, g);
+    Balcao(int aberta, int fechada, int g, double gorjeta) {
+        super(aberta, fechada, g, gorjeta);
 
     }
 
