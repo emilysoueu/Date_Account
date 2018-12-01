@@ -12,6 +12,7 @@ public class Mesa extends Service {
     int qtdClientes;
     double totalMesa;//conta da mesa
     ArrayList<Clientes> tempClientes;
+    double tempGorjeta;
     //int[] tempClientes;
 
     Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean statusMesa) {
@@ -34,9 +35,10 @@ public class Mesa extends Service {
     public void fecharContaMesa() {
         this.setTotalMesa();
         this.setGorjeta();
+        this.setTempGorjeta();
         this.printMesa();
         System.out.println("Valor Total: " + this.totalMesa);
-        System.out.println("Gorjeta Total: " + this.gorjeta);
+        System.out.println("Gorjeta Total: " + this.tempGorjeta);
 
         this.tempClientes.clear();
         this.statusMesa = false;
@@ -61,6 +63,13 @@ public class Mesa extends Service {
             this.totalMesa += temp.total;
         }
         this.totalMesa = totalMesa;
+    }
+
+    public void setTempGorjeta() {
+        for (Clientes aux : this.tempClientes) {
+            this.tempGorjeta += aux.getGorjeta();
+        }
+
     }
 
     public void printMesa() {
