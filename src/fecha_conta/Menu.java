@@ -55,9 +55,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int manager = 0;
         int numMesa;
         do {
-            //System.out.println(".............[1]Descrição Mesa....................................");
-            //System.out.println(".............[2]Descrição Balcão..................................");
-            //System.out.println(".............[3]Descrição Restaurante.............................");
             System.out.println(".............[1]Descrição.........................................");
             System.out.println(".............[2]Relatorios........................................");
             System.out.println(".............[0]Voltar............................................");
@@ -94,7 +91,8 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 1: {
                     System.out.println(".............Informe O Numero da mesa:....................");
                     numMesa = in.nextInt();
-                    this.listaMesa.get(numMesa - 1).print();
+                    Mesa aux = this.getMesa(numMesa);
+                    aux.print();
                 }
                 break;
                 //descrição do balcão
@@ -160,7 +158,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 break;
                 // atendimmento em balcao
                 case 2: {
-                    menuBalcao();
+                    menuFecharConta();
+                }
+                break;
+                case 3: {
+                    menuEditarConta();
                 }
                 break;
             }
@@ -193,6 +195,8 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     void menuFecharConta() {
         int menu;
+        int numMesa;
+        int numCliente;
         do {
             System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
             System.out.println(".............Atendimento.......................................:");
@@ -202,6 +206,24 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             menu = in.nextInt();
             switch (menu) {
                 case 1: {
+                    System.out.println(".............Informe O Numero da mesa:..................");
+                    numMesa = in.nextInt();
+                    Mesa auxMesa = this.getMesa(numMesa);
+                    double gorjetatemp;
+                    for( Clientes aux: auxMesa.listaCliente){
+                        System.out.println("Digite o valor da Gorjeta");
+                        gorjetatemp = in.nextDouble();
+                        aux.setGorjeta(gorjetatemp);
+                    }
+                    this.fecharContaMesa(numMesa);                    
+                    
+                    
+                    /*System.out.println(".............Informe o numero da Conta:.................");
+                    numCliente = in.nextInt();
+                    Clientes auxCliente = auxMesa.getCliente(numCliente);
+                    
+                    auxCliente.fecharContaCliente();  */               
+   
 
                 }
                 break;
