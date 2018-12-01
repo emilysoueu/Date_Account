@@ -61,12 +61,14 @@ public class Mesa extends Service {
     }
 
     public void printMesa() {
-        System.out.println("Mesa Ocupada: " + this.statusMesa);
+        System.out.println("Mesa Ocupada: " + this.getStatusMesa());
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Quantidade de Clientes: " + this.qtdClientes);
         //System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("");
     }
+    
+    
 
     public void printClientesMesa() {
         int i = 1;

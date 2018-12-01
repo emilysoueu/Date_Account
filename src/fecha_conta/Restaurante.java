@@ -163,6 +163,9 @@ public class Restaurante {
         switch (user) {
             // Interface Gerente
             case 1: {
+                boolean ocupada; // saber o estado da mesa
+               
+                
                 System.out.println(".............[1]Descrição Mesa.....................................");
                 System.out.println(".............[2]Descrição Balcão.....................................");
                 System.out.println(".............[3]Descrição Restaurante.....................................");
@@ -171,27 +174,27 @@ public class Restaurante {
                     switch(manager){
                         // descrição de uma mesa especifica
                         case 1:{   
+                           
                             System.out.println(".............Informe O Numero da mesa:............................");
-                            numMesa = in.nextInt();
+                            numMesa = in.nextInt();                            
+                            this.listaMesa.get(numMesa).printMesa();
                             
-        
-
-
-                            // status da mesa
-                            
-                            
-                            
-                            // quantidade de clientes
-                            // total da mesa
-
                         }break;
                         //descrição do balcão
                         case 2:{
-
+                            this.getBar(); // não sei o que essa função faz exatamente
                         }break;
                         // descrição de todas as mesas e do balcão
                         case 3:{
-
+                            int i = 0;
+                            System.out.println("Descrição de Todas as Mesas: ");
+                            for(Mesa aux : listaMesa){
+                                i++;
+                                System.out.println("Mesa "+ i+ " : ");
+                                aux.printMesa();                               
+                            }
+                             System.out.println("Descrição do Balcão: ");
+                             this.getBar();
                         }break;
 
                     }
