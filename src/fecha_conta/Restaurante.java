@@ -20,11 +20,11 @@ public class Restaurante {
         this.matrizCardapio = new double[5/*NumItens*/]; //declaração e instanciamento da matriz matrizCardapio
 
         //instanciando o objeto bar do tipo balcao
-        this.bar = new Balcao(0, 0, 0); // averiguar isso aqui        
+        this.bar = new Balcao(0, 0, 0, 0); // averiguar isso aqui        
 
         //instanciando a quantidade "numMesas" de objetos do tipo Mesa e adicionando na listaMesa
         for (int i = 0; i < 10/*numMesas*/; i++) {
-            this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, true));
+            this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, true));
         }
     }
 
