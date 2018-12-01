@@ -82,6 +82,7 @@ public class Clientes {
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Conta em Aberto: " + this.statusConta);
         System.out.println("Quantidade de Pedidos: " + this.listaItens.size());
+        System.out.println("");
     }
 
     public void printPedido() {
@@ -90,6 +91,7 @@ public class Clientes {
         for (Item aux : this.listaItens) {
             System.out.println("PEDIDO NUMERO:" + i++);
             aux.printItem();
+            System.out.println("");
         }
     }
 

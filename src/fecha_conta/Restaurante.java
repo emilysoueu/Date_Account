@@ -39,12 +39,15 @@ public class Restaurante {
     }
 
     public Balcao getBar() {
-
         return bar;
     }
 
     public void setBar(Balcao bar) {
         this.bar = bar;
+    }
+    
+    public Mesa getMesa(int numMesa){
+        return this.listaMesa.get(numMesa-1);
     }
 
     public double getValorGarcomMatriz(int indice) {
@@ -93,17 +96,16 @@ public class Restaurante {
 
     public void fecharContaMesa(int numMesa) {
         Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
-
-        System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
-
         int i = 1;
         for (Clientes aux : mesaAtual.tempClientes) {
-            System.out.println("Cliente: " + i);
+            System.out.println("Cliente: " + i++);
             aux.fecharContaCliente();
+            System.out.println("");
             int numGarcom = aux.getGarcom();
             matrizGarcom[numGarcom - 1] += aux.getGorjeta();
         }
         mesaAtual.fecharContaMesa();
+        System.out.println("");
     }
 
     /*public void fecharContaMesa(int numMesa) {
@@ -153,6 +155,7 @@ public class Restaurante {
         for (Mesa aux : listaMesa) {
             System.out.println("Mesa " + i++ + " : ");
             aux.print();
+            System.out.println("");
         }
     }
 

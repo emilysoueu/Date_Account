@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class Mesa extends Service {
 
-    
     int qtdClientes;
     double totalMesa;//conta da mesa
     ArrayList<Clientes> tempClientes;
@@ -37,9 +36,11 @@ public class Mesa extends Service {
         this.setTotalMesa();
         this.setGorjeta();
         this.setTempGorjeta();
-        this.print();
+        //this.print();
+        System.out.println("");
         System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("Gorjeta Total: " + this.tempGorjeta);
+        System.out.println("");
 
         this.tempClientes.clear();
         this.status = false;
