@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author emilysoueu
  */
-public class Menu extends Restaurante{  // usar o mesmo construtor de Restaurante
-    
-    Menu(int numGarcom, int NumItens, int numMesas){
-        super(numGarcom, NumItens,  numMesas);       
-        
+public class Menu extends Restaurante {  // usar o mesmo construtor de Restaurante
+
+    Menu(int numGarcom, int NumItens, int numMesas) {
+        super(numGarcom, NumItens, numMesas);
+
     }
-    
+
     Scanner in = new Scanner(System.in);
 
     public void menu() {
@@ -224,9 +224,10 @@ public class Menu extends Restaurante{  // usar o mesmo construtor de Restaurant
 
                         }
                         break;
-                        case 2:{
-                            
-                        }break;
+                        case 2: {
+
+                        }
+                        break;
                     }
 
                     System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
@@ -241,6 +242,5 @@ public class Menu extends Restaurante{  // usar o mesmo construtor de Restaurant
         } while (garcom != 0);
 
     }
-    
-    
+
 }

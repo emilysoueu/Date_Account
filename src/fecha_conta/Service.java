@@ -62,10 +62,10 @@ public class Service {
     }
 
     public void setGorjeta() {
-        for(Clientes aux: this.listaCliente){
+        for (Clientes aux : this.listaCliente) {
             this.gorjeta += aux.getGorjeta();
         }
-        
+
     }
 
 }

@@ -10,7 +10,7 @@ public class Clientes {
 
     boolean statusConta; //true aberta
     ArrayList<Item> listaItens;
-    int garcom;    
+    int garcom;
     double total;
     double gorjeta;
     //int Atendimento;// 0 = Balcao e 1 = Mesa
