@@ -183,7 +183,7 @@ public class Restaurante {
                 }
 
                 System.out.println("### MESA ATENDIDA ###");
-                xMesa.print();
+                xMesa.printMesa();
                 break;
             }
             // atendimmento em balcao
@@ -218,7 +218,8 @@ public class Restaurante {
                 } while (numItem != 0);
 
                 System.out.println("### CLIENTE ATENDIDO ###");
-                xCliente.print();
+                xCliente.printCliente();
+                xCliente.printPedido();
                 break;
             }
 
