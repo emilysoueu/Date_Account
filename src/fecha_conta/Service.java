@@ -80,6 +80,10 @@ public class Service {
     }
 
     public void relatorioAberto() {
+        if (this.listaCliente.isEmpty()) {
+            System.out.println("Não há Clientes");
+            return;
+        }
         for (Clientes aux : this.listaCliente) {
             if (aux.statusConta == true) {
                 aux.printCliente();
