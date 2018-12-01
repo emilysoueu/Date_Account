@@ -55,10 +55,37 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int manager = 0;
         int numMesa;
         do {
+            //System.out.println(".............[1]Descrição Mesa....................................");
+            //System.out.println(".............[2]Descrição Balcão..................................");
+            //System.out.println(".............[3]Descrição Restaurante.............................");
+            System.out.println(".............[1]Descrição.........................................");
+            System.out.println(".............[2]Relatorios........................................");
+            System.out.println(".............[0]Voltar............................................");
+            manager = in.nextInt();
+
+            switch (manager) {
+                // descrição de uma mesa especifica
+                case 1: {
+                    menuDescricao();
+                }
+                break;
+                //descrição do balcão
+                case 2: {
+                    menuRelatorio();
+                }
+                break;
+            }
+        } while (manager != 0);
+
+    }
+
+    void menuDescricao() {
+        int manager = 0;
+        int numMesa;
+        do {
             System.out.println(".............[1]Descrição Mesa....................................");
             System.out.println(".............[2]Descrição Balcão..................................");
             System.out.println(".............[3]Descrição Restaurante.............................");
-            System.out.println(".............[4]Relatorios........................................");
             System.out.println(".............[0]Voltar............................................");
             manager = in.nextInt();
 
@@ -80,16 +107,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 3: {
                     this.descricao();
                 }
-                case 4: {
-                   menuRelatorio();
-                }
                 break;
             }
         } while (manager != 0);
 
     }
-    
-    void menuRelatorio(){
+
+    void menuRelatorio() {
         int manager = 0;
         //int numMesa;
         do {
@@ -113,7 +137,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 // relatorio do total a cada garcom
                 case 3: {
                     this.relatorioGarcom();
-                }                
+                }
             }
         } while (manager != 0);
     }
@@ -123,15 +147,15 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         do {
             System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
             System.out.println(".............Atendimento.......................................:");
-            System.out.println(".............[1]Mesa............................................");
-            System.out.println(".............[2]Balcão..........................................");
+            System.out.println(".............[1]Abrir Conta.....................................");
+            System.out.println(".............[2]Fechar Conta....................................");
+            System.out.println(".............[2]Editar Conta....................................");
             System.out.println(".............[0]Voltar..........................................");
             menu = in.nextInt();
             switch (menu) {
 
-                //Atendimento Mesa
                 case 1: {
-                    menuMesa();
+                    menuAbrirConta();
                 }
                 break;
                 // atendimmento em balcao
@@ -142,6 +166,74 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (menu != 0);
 
+    }
+
+    void menuAbrirConta() {
+        int menu;
+        do {
+            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
+            System.out.println(".............Atendimento.......................................:");
+            System.out.println(".............[1]Mesa............................................");
+            System.out.println(".............[2]Balcão..........................................");
+            System.out.println(".............[0]Voltar..........................................");
+            menu = in.nextInt();
+            switch (menu) {
+                case 1: {
+                    menuMesa();
+                }
+                break;
+                case 2: {
+                    menuBalcao();
+                }
+                break;
+            }
+        } while (menu != 0);
+
+    }
+
+    void menuFecharConta() {
+        int menu;
+        do {
+            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
+            System.out.println(".............Atendimento.......................................:");
+            System.out.println(".............[1]Mesa............................................");
+            System.out.println(".............[2]Balcão..........................................");
+            System.out.println(".............[0]Voltar..........................................");
+            menu = in.nextInt();
+            switch (menu) {
+                case 1: {
+
+                }
+                break;
+                case 2: {
+
+                }
+                break;
+            }
+        } while (menu != 0);
+
+    }
+
+    void menuEditarConta() {
+        int menu;
+        do {
+            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
+            System.out.println(".............Atendimento.......................................:");
+            System.out.println(".............[1]Mesa............................................");
+            System.out.println(".............[2]Balcão..........................................");
+            System.out.println(".............[0]Voltar..........................................");
+            menu = in.nextInt();
+            switch (menu) {
+                case 1: {
+
+                }
+                break;
+                case 2: {
+
+                }
+                break;
+            }
+        } while (menu != 0);
     }
 
     void menuMesa() {
