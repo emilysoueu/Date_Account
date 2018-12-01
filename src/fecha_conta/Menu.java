@@ -55,72 +55,90 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int manager = 0;
         int numMesa;
         do {
-            System.out.println(".............[1]Descrição Mesa.....................................");
-            System.out.println(".............[2]Descrição Balcão.....................................");
-            System.out.println(".............[3]Descrição Restaurante.....................................");
-            System.out.println(".............[0]Voltar.....................................");
+            System.out.println(".............[1]Descrição Mesa....................................");
+            System.out.println(".............[2]Descrição Balcão..................................");
+            System.out.println(".............[3]Descrição Restaurante.............................");
+            System.out.println(".............[4]Relatorios........................................");
+            System.out.println(".............[0]Voltar............................................");
             manager = in.nextInt();
 
             switch (manager) {
                 // descrição de uma mesa especifica
                 case 1: {
-
-                    System.out.println(".............Informe O Numero da mesa:............................");
+                    System.out.println(".............Informe O Numero da mesa:....................");
                     numMesa = in.nextInt();
-                    this.listaMesa.get(numMesa).printMesa();
-
+                    this.listaMesa.get(numMesa - 1).print();
                 }
                 break;
                 //descrição do balcão
                 case 2: {
-                    this.getBar(); // não sei o que essa função faz exatamente
+                    //this.getBar(); // não sei o que essa função faz exatamente
+                    this.bar.print();
                 }
                 break;
                 // descrição de todas as mesas e do balcão
                 case 3: {
-                    int i = 0;
-                    System.out.println("Descrição de Todas as Mesas: ");
-                    for (Mesa aux : listaMesa) {
-                        i++;
-                        System.out.println("Mesa " + i + " : ");
-                        aux.printMesa();
-                    }
-                    System.out.println("Descrição do Balcão: ");
-                    this.getBar();
+                    this.descricao();
+                }
+                case 4: {
+                   menuRelatorio();
                 }
                 break;
-
             }
         } while (manager != 0);
 
+    }
+    
+    void menuRelatorio(){
+        int manager = 0;
+        //int numMesa;
+        do {
+            System.out.println(".............[1]Contas em Aberto..................................");
+            System.out.println(".............[2]Total Diário......................................");
+            System.out.println(".............[3]Garcom............................................");
+            System.out.println(".............[0]Voltar............................................");
+            manager = in.nextInt();
+
+            switch (manager) {
+                // relatorio de contas em aberto
+                case 1: {
+                    this.relatorioAberto();
+                }
+                break;
+                // relatorio do total arrecardado no dia
+                case 2: {
+                    this.relatorioFinal();
+                }
+                break;
+                // relatorio do total a cada garcom
+                case 3: {
+                    this.relatorioGarcom();
+                }                
+            }
+        } while (manager != 0);
     }
 
     void menuClient() {
         int menu;
         do {
-            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados.............");
-            System.out.println(".............Atendimento.........................................:");
-            System.out.println(".............[1]Mesa.....................................");
-            System.out.println(".............[2]Balcão...........................................");
-            System.out.println(".............[0]Voltar...........................................");
+            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados...........");
+            System.out.println(".............Atendimento.......................................:");
+            System.out.println(".............[1]Mesa............................................");
+            System.out.println(".............[2]Balcão..........................................");
+            System.out.println(".............[0]Voltar..........................................");
             menu = in.nextInt();
             switch (menu) {
 
                 //Atendimento Mesa
                 case 1: {
-
                     menuMesa();
-
                 }
                 break;
                 // atendimmento em balcao
                 case 2: {
-
                     menuBalcao();
-
                 }
                 break;
-
             }
         } while (menu != 0);
 
@@ -170,7 +188,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         }
 
         System.out.println("### MESA ATENDIDA ###");
-        xMesa.printMesa();
+        xMesa.print();
 
     }
 
@@ -211,8 +229,8 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             xCliente.printPedido();
 
             System.out.println("............Editar Pedido......................");
-            System.out.println("............[1]SIM.........................");
-            System.out.println("............[0]NÃO.........................");
+            System.out.println("............[1]SIM.............................");
+            System.out.println("............[0]NÃO.............................");
             int edit = in.nextInt();
             switch (edit) {
 
