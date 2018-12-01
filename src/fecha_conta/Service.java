@@ -26,6 +26,18 @@ public class Service {
         return garcom;
     }
 
+    public Clientes getCliente(int numCliente) {        
+        return this.listaCliente.get(numCliente -1);
+    }   
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public void setGarcom(int garcom) {
         this.garcom = garcom;
     }
@@ -87,7 +99,9 @@ public class Service {
         for (Clientes aux : this.listaCliente) {
             if (aux.statusConta == true) {
                 aux.printCliente();
+                System.out.println("");
                 aux.printPedido();
+                System.out.println("");
             }
         }
     }
