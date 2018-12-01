@@ -68,4 +68,14 @@ public class Service {
 
     }
 
+    public void relatorioAberto() {
+        for (Clientes aux : this.listaCliente) {
+            if (aux.statusConta == true) {
+                aux.printCliente();
+                aux.printPedido();
+            }
+        }
+    }    
+    
+
 }
