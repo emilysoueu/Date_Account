@@ -8,40 +8,41 @@ import java.util.ArrayList;
  */
 public class Mesa extends Service {
 
-    boolean statusMesa;//ocupa = true
+    
     int qtdClientes;
     double totalMesa;//conta da mesa
     ArrayList<Clientes> tempClientes;
     double tempGorjeta;
+    //boolean statusMesa;//ocupa = true
     //int[] tempClientes;
 
     Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean statusMesa) {
         super(abertaQtd, fechadaQtd, g, gorjeta);
         this.qtdClientes = qtdClientes;
         this.totalMesa = totalMesa; // total das contas de todos os clientes na mesa
-        this.statusMesa = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
+        this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
         //this.tempClientes = new int[qtdClientes]; // controle de clientes na mesa
         this.tempClientes = new ArrayList<>();
     }
 
     public boolean getStatusMesa() {
-        return statusMesa;
+        return status;
     }
 
     public void setStatusMesa(boolean statusMesa) {
-        this.statusMesa = statusMesa;
+        this.status = statusMesa;
     }
 
     public void fecharContaMesa() {
         this.setTotalMesa();
         this.setGorjeta();
         this.setTempGorjeta();
-        this.printMesa();
+        this.print();
         System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("Gorjeta Total: " + this.tempGorjeta);
 
         this.tempClientes.clear();
-        this.statusMesa = false;
+        this.status = false;
         this.totalMesa = 0;
         this.gorjeta = 0;
     }
@@ -69,14 +70,13 @@ public class Mesa extends Service {
         for (Clientes aux : this.tempClientes) {
             this.tempGorjeta += aux.getGorjeta();
         }
-
     }
 
-    public void printMesa() {
+    @Override
+    public void print() {
         System.out.println("Mesa Ocupada: " + this.getStatusMesa());
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Quantidade de Clientes: " + this.qtdClientes);
-        //System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("");
     }
 
