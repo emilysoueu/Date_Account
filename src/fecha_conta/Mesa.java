@@ -11,11 +11,11 @@ public class Mesa extends Service {
     boolean statusMesa;//ocupa = true
     int qtdClientes;
     double totalMesa;//conta da mesa
-    //int[] tempClientes;
     ArrayList<Clientes> tempClientes;
+    //int[] tempClientes;
 
-    Mesa(int abertaQtd, int fechadaQtd, int g, int qtdClientes, int totalMesa, boolean statusMesa) {
-        super(abertaQtd, fechadaQtd, g);
+    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean statusMesa) {
+        super(abertaQtd, fechadaQtd, g, gorjeta);
         this.qtdClientes = qtdClientes;
         this.totalMesa = totalMesa; // total das contas de todos os clientes na mesa
         this.statusMesa = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
@@ -33,12 +33,15 @@ public class Mesa extends Service {
 
     public void fecharContaMesa() {
         this.setTotalMesa();
+        this.setGorjeta();
         this.printMesa();
-        System.out.println("Valor Total:" + this.totalMesa);
+        System.out.println("Valor Total: " + this.totalMesa);
+        System.out.println("Gorjeta Total: " + this.gorjeta);
 
         this.tempClientes.clear();
         this.statusMesa = false;
         this.totalMesa = 0;
+        this.gorjeta = 0;
     }
 
     public int getQtdClientes() {
@@ -67,8 +70,6 @@ public class Mesa extends Service {
         //System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("");
     }
-    
-    
 
     public void printClientesMesa() {
         int i = 1;

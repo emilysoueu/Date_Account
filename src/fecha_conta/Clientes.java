@@ -10,9 +10,10 @@ public class Clientes {
 
     boolean statusConta; //true aberta
     ArrayList<Item> listaItens;
-    int garcom;
-    //int Atendimento;// 0 = Balcao e 1 = Mesa
+    int garcom;    
     double total;
+    double gorjeta;
+    //int Atendimento;// 0 = Balcao e 1 = Mesa
 
     public Clientes(boolean statusConta, int garcom/*, int Atendimento*/) {
         this.statusConta = statusConta;
@@ -80,6 +81,14 @@ public class Clientes {
             aux.printItem();
 //            System.out.println("");
         }
+    }
+
+    public double getGorjeta() {
+        return gorjeta;
+    }
+
+    public void setGorjeta(double gorjeta) {
+        this.gorjeta = gorjeta;
     }
 
 }

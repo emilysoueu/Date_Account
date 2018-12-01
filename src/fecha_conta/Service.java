@@ -12,8 +12,9 @@ public class Service {
     int totalFechado; // contas em aberto
     int totalAberto; // contas fechadas
     int garcom;
+    double gorjeta;
 
-    public Service(int totalFechado, int totalAberto, int garcom) {
+    public Service(int totalFechado, int totalAberto, int garcom, double gorjeta) {
         this.totalAberto = totalAberto;
         this.totalFechado = totalFechado;
         this.listaCliente = new ArrayList<>();
@@ -54,6 +55,17 @@ public class Service {
 
     public int getTotalFechado() {
         return totalFechado;
+    }
+
+    public double getGorjeta() {
+        return gorjeta;
+    }
+
+    public void setGorjeta() {
+        for(Clientes aux: this.listaCliente){
+            this.gorjeta += aux.getGorjeta();
+        }
+        
     }
 
 }
