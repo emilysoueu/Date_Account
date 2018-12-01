@@ -8,7 +8,6 @@ public class Balcao extends Service {
 
     Balcao(int aberta, int fechada, int g, double gorjeta) {
         super(aberta, fechada, g, gorjeta);
-
     }
 
 }

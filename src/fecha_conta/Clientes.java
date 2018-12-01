@@ -70,6 +70,14 @@ public class Clientes {
         }
     }
 
+    public double getGorjeta() {
+        return gorjeta;
+    }
+
+    public void setGorjeta(double gorjeta) {
+        this.gorjeta = gorjeta;
+    }
+
     public void printCliente() {
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Conta em Aberto: " + this.statusConta);
@@ -82,16 +90,7 @@ public class Clientes {
         for (Item aux : this.listaItens) {
             System.out.println("PEDIDO NUMERO:" + i++);
             aux.printItem();
-//            System.out.println("");
         }
-    }
-
-    public double getGorjeta() {
-        return gorjeta;
-    }
-
-    public void setGorjeta(double gorjeta) {
-        this.gorjeta = gorjeta;
     }
 
 }
