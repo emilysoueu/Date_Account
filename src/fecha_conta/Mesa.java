@@ -31,6 +31,13 @@ public class Mesa extends Service {
         this.statusMesa = statusMesa;
     }
 
+    public void fecharContaMesa() {
+        this.statusMesa = false;
+        this.setTotalMesa();
+        this.printMesa();
+        System.out.println("Valor Total:" + this.totalMesa);
+    }
+
     public int getQtdClientes() {
         return qtdClientes;
     }
@@ -43,7 +50,7 @@ public class Mesa extends Service {
         return totalMesa;
     }
 
-    public void setTotalMesa(double totalMesa) {
+    public void setTotalMesa() {
         for (Clientes temp : tempClientes) {
             this.totalMesa += temp.total;
         }
@@ -51,18 +58,22 @@ public class Mesa extends Service {
     }
 
     public void printMesa() {
+        System.out.println("Mesa Ocupada: " + this.statusMesa);
+        System.out.println("Numero do Garcom: " + this.garcom);
+        System.out.println("Quantidade de Clientes: " + this.qtdClientes);
+        //System.out.println("Valor Total: " + this.totalMesa);
+        System.out.println("");
+    }
+
+    public void printClientesMesa() {
         int i = 1;
-
-        System.out.println("Mesa Ocupada: " + this.getStatusMesa());
-        System.out.println("Numero do Garcom: " + this.getGarcom());
-        System.out.println("Quantidade de Clientes: " + this.getQtdClientes());
-        System.out.println("Valor Total: " + this.getTotalMesa());
-
+        System.out.println("");
         for (Clientes aux : tempClientes) {
             System.out.println("Numero do Cliente:" + i++);
             aux.printCliente();
             aux.printPedido();
         }
+        System.out.println("");
     }
 
 }
