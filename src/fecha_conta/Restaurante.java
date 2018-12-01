@@ -153,30 +153,32 @@ public class Restaurante {
     public void menu() {
         int menu, user, manager;
         int numMesa;
+        do {
+            System.out.println(".............Restaurante Poneis Dourados..........................");
+            System.out.println(".............[1]Administração.....................................");
+            System.out.println(".............[2]Usuário...........................................");
+            System.out.println(".............[0]Sair...........................................");
+            user = in.nextInt();
 
-        System.out.println(".............Restaurante Poneis Dourados.............");
-        System.out.println(".............[1]Administração.....................................");
-        System.out.println(".............[2]Usuário...........................................");
-        user = in.nextInt();
+            switch (user) {
+                // Interface Gerente
+                case 1: {
 
-        switch (user) {
-            // Interface Gerente
-            case 1: {
+                    menuManager();
 
-                menuManager();
+                }// fim case 1
+                break;
 
-            }// fim case 1
-            break;
+                // Interface Cliente
+                case 2: {
 
-            // Interface Cliente
-            case 2: {
+                    menuClient();
 
-                menuClient();
+                }//fim case 2
+                break;
 
-            }//fim case 2
-            break;
-
-        }// fim switchc user
+            }// fim switchc user
+        } while (user != 0);
     }
 
     void menuManager() {
@@ -186,6 +188,7 @@ public class Restaurante {
             System.out.println(".............[1]Descrição Mesa.....................................");
             System.out.println(".............[2]Descrição Balcão.....................................");
             System.out.println(".............[3]Descrição Restaurante.....................................");
+            System.out.println(".............[0]Voltar.....................................");            
             manager = in.nextInt();
 
             switch (manager) {
