@@ -13,6 +13,7 @@ public class Service {
     int totalAberto; // contas fechadas
     int garcom;
     double gorjeta;
+    boolean status;
 
     public Service(int totalFechado, int totalAberto, int garcom, double gorjeta) {
         this.totalAberto = totalAberto;
@@ -65,7 +66,6 @@ public class Service {
         for (Clientes aux : this.listaCliente) {
             this.gorjeta += aux.getGorjeta();
         }
-
     }
 
     void clienteDelItem(int numCliente, int numItem) {
@@ -76,7 +76,6 @@ public class Service {
                 aux.delItem(numItem);
                 System.out.println("\n Item alterado com sucesso\n");
             }
-
         }
     }
 
@@ -87,6 +86,13 @@ public class Service {
                 aux.printPedido();
             }
         }
+    }
+
+    public void print() {
+        System.out.println("Ocupado(a): " + this.status);
+        System.out.println("Numero do Garcom: " + this.garcom);
+        System.out.println("Quantidade de Clientes: " + this.listaCliente.size());
+        System.out.println("");
     }
 
 }
