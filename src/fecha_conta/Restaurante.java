@@ -151,9 +151,8 @@ public class Restaurante {
     Scanner in = new Scanner(System.in);
 
     public void menu() {
-        int menu,user, manager;
+        int menu, user, manager;
         int numMesa;
-        
 
         System.out.println(".............Restaurante Poneis Dourados.............");
         System.out.println(".............[1]Administração.....................................");
@@ -163,146 +162,179 @@ public class Restaurante {
         switch (user) {
             // Interface Gerente
             case 1: {
-                boolean ocupada; // saber o estado da mesa
-               
-                
-                System.out.println(".............[1]Descrição Mesa.....................................");
-                System.out.println(".............[2]Descrição Balcão.....................................");
-                System.out.println(".............[3]Descrição Restaurante.....................................");
-                manager = in.nextInt();
-                do{
-                    switch(manager){
-                        // descrição de uma mesa especifica
-                        case 1:{   
-                           
-                            System.out.println(".............Informe O Numero da mesa:............................");
-                            numMesa = in.nextInt();                            
-                            this.listaMesa.get(numMesa).printMesa();
-                            
-                        }break;
-                        //descrição do balcão
-                        case 2:{
-                            this.getBar(); // não sei o que essa função faz exatamente
-                        }break;
-                        // descrição de todas as mesas e do balcão
-                        case 3:{
-                            int i = 0;
-                            System.out.println("Descrição de Todas as Mesas: ");
-                            for(Mesa aux : listaMesa){
-                                i++;
-                                System.out.println("Mesa "+ i+ " : ");
-                                aux.printMesa();                               
-                            }
-                             System.out.println("Descrição do Balcão: ");
-                             this.getBar();
-                        }break;
 
-                    }
-                }while( manager != 0); // close do gerente
-                
+                menuManager();
 
-            }
+            }// fim case 1
             break;
+
             // Interface Cliente
             case 2: {
 
-                System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados.............");
-                System.out.println(".............Atendimento.........................................:");
-                System.out.println(".............[1]Mesa.....................................");
-                System.out.println(".............[2]Balcão...........................................");
-                menu = in.nextInt();
-                switch (menu) {
+                menuClient();
 
-                    //Atendimento Mesa
-                    case 1: {
-                        int qtdCliente;
-                        int garcom;
-                        
+            }//fim case 2
+            break;
 
-                        int numItem; // recebe pedidos do cliente
-                        int qtdItem;
-                        double valorUni;
+        }// fim switchc user
+    }
 
-                        System.out.println("Informe a quantidade de Clientes na mesa:");
-                        qtdCliente = in.nextInt();
-                        System.out.println("Informe o numero do garçom para atendê - lo:");
-                        garcom = in.nextInt();
-                        System.out.println("Informe o numero da mesa:");
-                        numMesa = in.nextInt();
+    void menuManager() {
+        int manager = 0;
+        int numMesa;
+        do {
+            System.out.println(".............[1]Descrição Mesa.....................................");
+            System.out.println(".............[2]Descrição Balcão.....................................");
+            System.out.println(".............[3]Descrição Restaurante.....................................");
+            manager = in.nextInt();
 
-                        // Mesa xMesa = new Mesa(qtdCliente,0,1,qtdCliente,garcom,numMesa,true);
-                        Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
-                        xMesa.setGarcom(garcom);
-                        xMesa.setQtdClientes(qtdCliente);
+            switch (manager) {
+                // descrição de uma mesa especifica
+                case 1: {
 
-                        for (Clientes aux : xMesa.tempClientes) {
+                    System.out.println(".............Informe O Numero da mesa:............................");
+                    numMesa = in.nextInt();
+                    this.listaMesa.get(numMesa).printMesa();
 
-                            do {
-                                System.out.println("Numero do item(0 para encerar pedido) : ");
-                                numItem = in.nextInt();
-
-                                if (numItem == 0) {
-                                    break;
-                                }
-
-                                System.out.println("Quantidade do item: ");
-                                qtdItem = in.nextInt();
-
-                                System.out.println("Qual o valor unitário do item: ");
-                                valorUni = in.nextDouble();
-
-                                aux.addPedido(numItem, qtdItem, valorUni);
-
-                            } while (numItem != 0);
-
-                        }
-
-                        System.out.println("### MESA ATENDIDA ###");
-                        xMesa.printMesa();
-                        break;
+                }
+                break;
+                //descrição do balcão
+                case 2: {
+                    this.getBar(); // não sei o que essa função faz exatamente
+                }
+                break;
+                // descrição de todas as mesas e do balcão
+                case 3: {
+                    int i = 0;
+                    System.out.println("Descrição de Todas as Mesas: ");
+                    for (Mesa aux : listaMesa) {
+                        i++;
+                        System.out.println("Mesa " + i + " : ");
+                        aux.printMesa();
                     }
-                    // atendimmento em balcao
-                    case 2: {
-                        int garcom;
+                    System.out.println("Descrição do Balcão: ");
+                    this.getBar();
+                }
+                break;
 
-                        int numItem; // recebe pedidos do cliente
-                        int qtdItem;
-                        double valorUni;
+            }
+        } while (manager != 0);
 
-                        System.out.println("Informe o numero do garçom para atendê-lo:");
-                        garcom = in.nextInt();
-                        this.abrirContaBalcao(garcom); // informar numero do garçom
+    }
 
-                        Clientes xCliente = this.abrirContaBalcao(garcom);
-                        do {
-                            System.out.println("Numero do item(0 para encerar pedido) : ");
-                            numItem = in.nextInt();
+    void menuClient() {
+        int menu;
+        do {
+            System.out.println(".............Bem Vindo ao Restaurante Poneis Dourados.............");
+            System.out.println(".............Atendimento.........................................:");
+            System.out.println(".............[1]Mesa.....................................");
+            System.out.println(".............[2]Balcão...........................................");
+            System.out.println(".............[0]Voltar...........................................");
+            menu = in.nextInt();
+            switch (menu) {
 
-                            if (numItem == 0) {
-                                break;
-                            }
+                //Atendimento Mesa
+                case 1: {
 
-                            System.out.println("Quantidade do item: ");
-                            qtdItem = in.nextInt();
+                    menuMesa();
 
-                            System.out.println("Qual o valor unitário do item: ");
-                            valorUni = in.nextDouble();
+                }
+                break;
+                // atendimmento em balcao
+                case 2: {
 
-                            xCliente.addPedido(numItem, qtdItem, valorUni);
-
-                        } while (numItem != 0);
-
-                        System.out.println("### CLIENTE ATENDIDO ###");
-                        xCliente.printCliente();
-                        xCliente.printPedido();
-                        break;
-                    }
+                    menuBalcao();
 
                 }
                 break;
 
             }
-        }
+        } while (menu != 0);
 
     }
+
+    void menuMesa() {
+        int qtdCliente = 0;
+        int garcom;
+        int numMesa;
+
+        int numItem; // recebe pedidos do cliente
+        int qtdItem;
+        double valorUni;
+
+        System.out.println("Informe a quantidade de Clientes na mesa:");
+        qtdCliente = in.nextInt();
+        System.out.println("Informe o numero do garçom para atendê - lo:");
+        garcom = in.nextInt();
+        System.out.println("Informe o numero da mesa:");
+        numMesa = in.nextInt();
+
+        // Mesa xMesa = new Mesa(qtdCliente,0,1,qtdCliente,garcom,numMesa,true);
+        Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
+        xMesa.setGarcom(garcom);
+        xMesa.setQtdClientes(qtdCliente);
+
+        for (Clientes aux : xMesa.tempClientes) {
+
+            do {
+                System.out.println("Numero do item(0 para encerar pedido) : ");
+                numItem = in.nextInt();
+
+                if (numItem == 0) {
+                    break;
+                }
+
+                System.out.println("Quantidade do item: ");
+                qtdItem = in.nextInt();
+
+                System.out.println("Qual o valor unitário do item: ");
+                valorUni = in.nextDouble();
+
+                aux.addPedido(numItem, qtdItem, valorUni);
+
+            } while (numItem != 0);
+
+        }
+
+        System.out.println("### MESA ATENDIDA ###");
+        xMesa.printMesa();
+
+    }
+
+    void menuBalcao() {
+        int garcom;
+
+        int numItem; // recebe pedidos do cliente
+        int qtdItem;
+        double valorUni;
+
+        System.out.println("Informe o numero do garçom para atendê-lo:");
+        garcom = in.nextInt();
+        this.abrirContaBalcao(garcom); // informar numero do garçom
+
+        Clientes xCliente = this.abrirContaBalcao(garcom);
+        do {
+            System.out.println("Numero do item(0 para encerar pedido) : ");
+            numItem = in.nextInt();
+
+            if (numItem == 0) {
+                break;
+            }
+
+            System.out.println("Quantidade do item: ");
+            qtdItem = in.nextInt();
+
+            System.out.println("Qual o valor unitário do item: ");
+            valorUni = in.nextDouble();
+
+            xCliente.addPedido(numItem, qtdItem, valorUni);
+
+        } while (numItem != 0);
+
+        System.out.println("### CLIENTE ATENDIDO ###");
+        xCliente.printCliente();
+        xCliente.printPedido();
+
+    }
+
 }
