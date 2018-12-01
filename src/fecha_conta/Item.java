@@ -14,7 +14,7 @@ public class Item {
     Item(int numItem, int qtdItem, double valorUni, double valorTot) {
         this.numItem = numItem;
         this.qtdItem = qtdItem;
-        this.valorTot = valorUni;
+        this.valorUni = valorUni;
         this.valorTot = valorTot;
     }
 
@@ -46,8 +46,16 @@ public class Item {
         return valorTot;
     }
 
-    public void setValorTot(double valorTot) {
-        this.valorTot = valorTot;
+    public void setValorTot() {
+        this.valorTot = this.getNumItem()*this.getValorUni();
+    }
+
+    public void printItem() {
+        System.out.println("Numero do item: " + this.getNumItem());
+        System.out.println("Quantidade do item: " + this.getQtdItem());
+        System.out.println("Valor Unitário: " + getValorUni());
+        System.out.println("Valor Total: " + getValorTot());
+        System.out.println("");
     }
 
 }
