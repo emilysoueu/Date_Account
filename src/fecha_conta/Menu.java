@@ -440,7 +440,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("Digite o numero da conta ");
         int numCliente = in.nextInt();
 
-        Clientes xCliente = this.bar.getCliente(numCliente-1);
+        Clientes xCliente = this.bar.getCliente(numCliente);
         int pedido, del;
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
