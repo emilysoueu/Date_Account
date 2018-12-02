@@ -15,19 +15,18 @@ public class Mesa extends Service {
     //boolean statusMesa;//ocupa = true
     //int[] tempClientes;
 
-    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean status) {
+    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa,double tempGorjeta, boolean status) {
         super(abertaQtd, fechadaQtd, g, gorjeta, status);
         this.qtdClientes = qtdClientes;
         this.totalMesa = totalMesa; // total das contas de todos os clientes na mesa
-        //this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
-        //this.tempClientes = new int[qtdClientes]; // controle de clientes na mesa
+        this.tempGorjeta = tempGorjeta;        
         this.tempClientes = new ArrayList<>();
+        //this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
     }
 
     /*public boolean getStatusMesa() {
         return status;
     }
-
     public void setStatusMesa(boolean statusMesa) {
         this.status = statusMesa;
     }*/

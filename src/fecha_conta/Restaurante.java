@@ -26,7 +26,7 @@ public class Restaurante {
 
         //instanciando a quantidade "numMesas" de objetos do tipo Mesa e adicionando na listaMesa
         for (int i = 0; i < 10/*numMesas*/; i++) {
-            this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, false));
+            this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, 0, false));
         }
     }
 
