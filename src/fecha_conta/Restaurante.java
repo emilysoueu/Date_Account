@@ -13,12 +13,15 @@ public class Restaurante {
     double[] matrizGarcom;
     double[] matrizCardapio;
     Balcao bar;
+    double gorjetatotal;
+    double pagamentototal;
+    double totalrestaurante;
 
-    public Restaurante(int numGarcom, int NumItens, int numMesas) {
+    public Restaurante(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
         this.listaMesa = new ArrayList<>(); //declaração e instanciamento do arraylist listaMesa
         this.matrizGarcom = new double[5/*numGarcom*/]; //declaração e instanciamento da matriz matrizGarcom
         this.matrizCardapio = new double[5/*NumItens*/]; //declaração e instanciamento da matriz matrizCardapio
-
+        this.totalrestaurante = totalrestaurante;
         //instanciando o objeto bar do tipo balcao
         this.bar = new Balcao(0, 0, 0, 0); // averiguar isso aqui        
 
@@ -92,6 +95,7 @@ public class Restaurante {
     public void fecharContaBalcao(int numCliente, double gorjeta) {
         Clientes atual = this.bar.listaCliente.get(numCliente - 1);
         atual.fecharContaCliente();
+        this.bar.total += atual.getTotal();
         int numGarcom = atual.getGarcom();
         matrizGarcom[numGarcom - 1] += gorjeta;
     }
@@ -103,6 +107,7 @@ public class Restaurante {
         for (Clientes aux : mesaAtual.tempClientes) {
             System.out.println("# CLIENTE: " + i++);
             aux.fecharContaCliente();
+            mesaAtual.total += aux.getTotal();
             System.out.println("");
             int numGarcom = aux.getGarcom();
             matrizGarcom[numGarcom - 1] += aux.getGorjeta();
@@ -111,20 +116,6 @@ public class Restaurante {
         System.out.println("");
     }
 
-    /*public void fecharContaMesa(int numMesa) {
-        Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
-
-        System.out.println("Total da Mesa: " + mesaAtual.getTotalMesa());
-
-        for (int i = 0; i < mesaAtual.tempClientes.size(); i++) {
-            System.out.println("Total por Cliente" + i + ": " + mesaAtual.tempClientes.get(i).total);
-            mesaAtual.tempClientes.get(i).fecharContaCliente();
-        }
-
-        mesaAtual.tempClientes.clear();
-        mesaAtual.statusMesa = false;
-        mesaAtual.totalMesa = 0;
-    }*/
     public int getTotalAberto() {
         int t = 0;
         for (Mesa aux : listaMesa) {
@@ -178,16 +169,32 @@ public class Restaurante {
 
     //o Emitir total apurado no dia
     public void relatorioFinal() {
+        this.bar.setGorjeta();
         System.out.println("RELATORIO BALCAO:");
-        System.out.println(bar.getGorjeta());
+        System.out.println("Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal());
         System.out.println("");
+
+        this.gorjetatotal += bar.getGorjeta();
+        this.pagamentototal += bar.getTotal();
 
         System.out.println("RELATORIO POR MESA:");
         int i = 1;
         for (Mesa aux : this.listaMesa) {
-            System.out.println("Gorjeta Mesa " + i++ + ": " + aux.getGorjeta());
+            aux.setGorjeta();
+            System.out.println("Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + " | Pagamentos: " + aux.getTotal());
             System.out.println("");
+
+            this.gorjetatotal += aux.getGorjeta();
+            this.pagamentototal += aux.getTotal();
         }
+
+        this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
+
+        System.out.println("Total Diário (Pagamentos): " + this.pagamentototal);
+        System.out.println("Total Diário (Gorjeta): " + this.gorjetatotal);
+        System.out.println("Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante);
+        System.out.println("");
+
     }
 
     //o Emitir relatório de gorjetas por garçom
