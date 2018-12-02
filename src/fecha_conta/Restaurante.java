@@ -4,19 +4,11 @@ package fecha_conta;
  *
  * @author emilysoueu, fernandodojo, kellyberreca
  */
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.util.Scanner;
-import java.util.Scanner;
+
+
 
 public class Restaurante {
 
@@ -41,18 +33,7 @@ public class Restaurante {
             this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, false));
         }
     }
-    /////////////////////////////==========FILES==========//////////////////////////////////////////////////////
 
-    /*
-    @novoArquivo = caminho da pasta onde vai ser gerado novo arquivo
-     */
-    public void escritor(String novoArquivo, String relatorios) throws IOException {
-        try (BufferedWriter buffEscreve = new BufferedWriter(new FileWriter(novoArquivo))) {
-            String linha = "";
-            linha = relatorios;
-            buffEscreve.append(linha + "\n");
-        }
-    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     public void cardapio() {
@@ -229,51 +210,8 @@ public class Restaurante {
             System.out.println("Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i]);
             System.out.println("");
         }
-    }
-    
-    //============ teste arquivos====================//
-    /*
-    @Override
-    public String toString() {
-        String bos = "";
-        bos += "Relatórios";
-        bos += "\n";
-        bos += "RELATORIO BALCAO:";
-        bos += "\n";
-        bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
-        bos += "\n";
-        bos += "RELATORIO POR MESA:";
-        bos += "\n";
-         int i = 1;
-        for (Mesa aux : this.listaMesa) {           
-            aux.setGorjeta();
-            bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + "   | Pagamentos: " + aux.getTotal();
-            bos += "\n";
-            this.gorjetatotal += aux.getGorjeta();
-            this.pagamentototal += aux.getTotal();
-        }
-        
-        bos +="RELATORIO GARÇOM";
-        bos += "\n";
-        for (i = 0; i < 5; i++) {
-            bos += "Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i];
-            bos += "\n";
-        }
+    }   
+   
 
-        bos += "\n";
-        bos += "Total Restaurante Poneis Dourados";
-        bos += "\n";
-        bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
-        bos += "\n";
-        bos += "Total Diário (Pagamentos): " + this.pagamentototal;
-        bos += "\n";
-        bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
-        bos += "\n";
-        bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
-        bos += "\n";
-
-        return bos;
-    }
-*/
 
 }
