@@ -14,6 +14,7 @@ public class Service {
     int garcom;
     double gorjeta;
     boolean status;
+    double total;
 
     public Service(int totalFechado, int totalAberto, int garcom, double gorjeta) {
         this.totalAberto = totalAberto;
@@ -28,6 +29,14 @@ public class Service {
 
     public Clientes getCliente(int numCliente) {
         return this.listaCliente.get(numCliente - 1);
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public boolean isStatus() {
@@ -111,7 +120,6 @@ public class Service {
                 i += 1;
             }
         }
-        //System.out.println("Quantidade de Clientes: " + this.listaCliente.size());
         System.out.println("Quantidade de Clientes: " + i);
         System.out.println("");
     }
