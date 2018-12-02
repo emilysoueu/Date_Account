@@ -280,9 +280,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         xMesa.setGarcom(garcom);
         xMesa.setQtdClientes(qtdCliente);
 
-        //int i=1;
         for (Clientes aux : xMesa.tempClientes) {
-            //System.out.println("\nPEDIDO CLIENTE Nº"+ i++ +": ");
             System.out.println("\nPEDIDO CLIENTE Nº" + aux.getNum() + ": ");
 
             do {
@@ -468,22 +466,25 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     @Override
     public String toString() {
         String bos = "";
+        //double totalrestauranteaux;
 
         bos += "Relatórios";
         bos += "\n\n\n";
         bos += "RELATORIO BALCAO:";
         bos += "\n";
-        bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
+        bos += "Gorjeta:" + this.bar.getGorjeta() + " | Pagamentos: " + this.bar.getTotal();
         bos += "\n\n\n";
         bos += "RELATORIO POR MESA:";
         bos += "\n";
         int i = 1;
         for (Mesa aux : this.listaMesa) {
-            aux.setGorjeta();
+            //aux.setGorjeta();
             bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + "   | Pagamentos: " + aux.getTotal();
             bos += "\n";
-            this.gorjetatotal += aux.getGorjeta();
-            this.pagamentototal += aux.getTotal();
+            //this.gorjetatotal += aux.getGorjeta();
+            //this.setGorjetatotal(aux.getGorjeta());
+            //this.pagamentototal += aux.getTotal();
+            //this.setPagamentototal(aux.getTotal());
         }
 
         bos += "\n\n\n";
@@ -498,13 +499,18 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         bos += "TOTAL";
         bos += "\n\n\n";
         bos += "Total Restaurante Poneis Dourados";
-        bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
+        //bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
+        //totalrestauranteaux = this.getGorjetatotal() + this.getPagamentototal();
+
+        //bos += this.setTotalrestaurante(totalrestauranteaux);
         bos += "\n";
-        bos += "Total Diário (Pagamentos): " + this.pagamentototal;
+        bos += "Total Diário (Pagamentos): " + this.getPagamentototal();
         bos += "\n";
-        bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
+        //bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
+        bos += "Total Diário (Gorjeta): " + this.getGorjetatotal();
         bos += "\n";
-        bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
+        //bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
+        bos += "Total Diário (Pagamentos + Gorjeta): " + this.getTotalrestaurante();
         bos += "\n";
 
         return bos;

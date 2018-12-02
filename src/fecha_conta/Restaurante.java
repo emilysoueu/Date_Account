@@ -8,13 +8,14 @@ import java.util.ArrayList;
 
 public class Restaurante {
 
-    ArrayList<Mesa> listaMesa;
+    Balcao bar;
+    private double gorjetatotal;
+    private double pagamentototal;
+    private double totalrestaurante;
+
     double[] matrizGarcom;
     double[] matrizCardapio;
-    Balcao bar;
-    double gorjetatotal;
-    double pagamentototal;
-    double totalrestaurante;
+    ArrayList<Mesa> listaMesa;
 
     public Restaurante(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
         this.listaMesa = new ArrayList<>(); //declaração e instanciamento do arraylist listaMesa
@@ -42,8 +43,32 @@ public class Restaurante {
         this.matrizCardapio[2] = 30;
     }
 
+    public double getGorjetatotal() {
+        return gorjetatotal;
+    }
+
+    public void setGorjetatotal(double gorjetatotal) {
+        this.gorjetatotal += gorjetatotal;
+    }
+
+    public double getPagamentototal() {
+        return pagamentototal;
+    }
+
+    public void setPagamentototal(double pagamentototal) {
+        this.pagamentototal += pagamentototal;
+    }
+
+    public double getTotalrestaurante() {
+        return totalrestaurante;
+    }
+
+    public void setTotalrestaurante(double totalrestaurante) {
+        this.totalrestaurante = totalrestaurante;
+    }
+
     public Balcao getBar() {
-        return bar;
+        return this.bar;
     }
 
     public void setBar(Balcao bar) {
@@ -125,7 +150,7 @@ public class Restaurante {
             t += aux.getTotalAberto();
         }
 
-        t += bar.getTotalAberto();
+        t += this.bar.getTotalAberto();
 
         return t;
     }
@@ -136,7 +161,7 @@ public class Restaurante {
             t += aux.getTotalFechado();
         }
 
-        t += bar.getTotalFechado();
+        t += this.bar.getTotalFechado();
 
         return t;
     }
@@ -159,7 +184,7 @@ public class Restaurante {
     //o Emitir relatório de contas em aberto (em atendimento)
     public void relatorioAberto() {
         System.out.println("CONTAS EM ABERTO - BALCAO");
-        bar.relatorioAberto();
+        this.bar.relatorioAberto();
 
         System.out.println("CONTAS EM ABERTO - MESA");
         int i = 1;
@@ -174,11 +199,11 @@ public class Restaurante {
     public void relatorioFinal() {
         this.bar.setGorjeta();
         System.out.println("RELATORIO BALCAO:");
-        System.out.println("Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal());
+        System.out.println("Gorjeta:" + this.bar.getGorjeta() + " | Pagamentos: " + this.bar.getTotal());
         System.out.println("");
 
-        this.gorjetatotal += bar.getGorjeta();
-        this.pagamentototal += bar.getTotal();
+        this.gorjetatotal += this.bar.getGorjeta();
+        this.pagamentototal += this.bar.getTotal();
 
         System.out.println("RELATORIO POR MESA:");
         int i = 1;
