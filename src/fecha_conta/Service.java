@@ -8,23 +8,28 @@ import java.util.ArrayList;
 
 public class Service {
 
+    private int totalFechado; // contas em aberto
+    private int totalAberto; // contas fechadas
+    private int garcom;
+    private double gorjeta;
+    private boolean status;
+    private double total;
     ArrayList<Clientes> listaCliente;
-    int totalFechado; // contas em aberto
-    int totalAberto; // contas fechadas
-    int garcom;
-    double gorjeta;
-    boolean status;
-    double total;
 
-    public Service(int totalFechado, int totalAberto, int garcom, double gorjeta) {
+    public Service(int totalFechado, int totalAberto, int garcom, double gorjeta, boolean status) {
         this.totalAberto = totalAberto;
         this.totalFechado = totalFechado;
         this.listaCliente = new ArrayList<>();
         this.garcom = garcom;
+        this.status = status;
     }
 
     public int getGarcom() {
         return garcom;
+    }
+
+    public void setGarcom(int garcom) {
+        this.garcom = garcom;
     }
 
     public Clientes getCliente(int numCliente) {
@@ -36,19 +41,15 @@ public class Service {
     }
 
     public void setTotal(double total) {
-        this.total = total;
+        this.total += total;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public void setGarcom(int garcom) {
-        this.garcom = garcom;
     }
 
     public int getTotalAberto() {
@@ -83,22 +84,16 @@ public class Service {
         return gorjeta;
     }
 
+    public void zerarGorjeta() {
+        this.gorjeta = 0;
+    }
+
     public void setGorjeta() {
         for (Clientes aux : this.listaCliente) {
             this.gorjeta += aux.getGorjeta();
         }
     }
 
-    /*void clienteDelItem(int numCliente, int numItem) {
-        int i = 1;
-        for (Clientes aux : this.listaCliente) {
-            i++;
-            if (i == numCliente) {
-                aux.delItem(numItem);
-                System.out.println("\n Item alterado com sucesso\n");
-            }
-        }
-    }*/
     public void relatorioAberto() {
         int i = 1;
         for (Clientes aux : this.listaCliente) {

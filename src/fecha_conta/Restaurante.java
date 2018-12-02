@@ -22,7 +22,7 @@ public class Restaurante {
         this.matrizCardapio = new double[5/*NumItens*/]; //declaração e instanciamento da matriz matrizCardapio
         this.totalrestaurante = totalrestaurante;
         //instanciando o objeto bar do tipo balcao
-        this.bar = new Balcao(0, 0, 0, 0); // averiguar isso aqui        
+        this.bar = new Balcao(0, 0, 0, 0, false); // averiguar isso aqui        
 
         //instanciando a quantidade "numMesas" de objetos do tipo Mesa e adicionando na listaMesa
         for (int i = 0; i < 10/*numMesas*/; i++) {
@@ -96,7 +96,8 @@ public class Restaurante {
     public void fecharContaBalcao(int numCliente, double gorjeta) {
         Clientes atual = this.bar.listaCliente.get(numCliente - 1);
         atual.fecharContaCliente();
-        this.bar.total += atual.getTotal();
+        //this.bar.total += atual.getTotal();
+        this.bar.setTotal(atual.getTotal());
         int numGarcom = atual.getGarcom();
         matrizGarcom[numGarcom - 1] += gorjeta;
     }
@@ -108,7 +109,8 @@ public class Restaurante {
         for (Clientes aux : mesaAtual.tempClientes) {
             System.out.println("# CLIENTE: " + i++);
             aux.fecharContaCliente();
-            mesaAtual.total += aux.getTotal();
+            //mesaAtual.total += aux.getTotal();
+            mesaAtual.setTotal(aux.getTotal());
             System.out.println("");
             int numGarcom = aux.getGarcom();
             matrizGarcom[numGarcom - 1] += aux.getGorjeta();

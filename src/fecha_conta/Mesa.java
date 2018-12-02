@@ -8,30 +8,29 @@ import java.util.ArrayList;
  */
 public class Mesa extends Service {
 
-    int qtdClientes;
-    double totalMesa;//conta da mesa
+    private int qtdClientes;
+    private double totalMesa;//conta da mesa    
+    private double tempGorjeta;
     ArrayList<Clientes> tempClientes;
-    double tempGorjeta;
     //boolean statusMesa;//ocupa = true
     //int[] tempClientes;
 
-    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean statusMesa) {
-        super(abertaQtd, fechadaQtd, g, gorjeta);
+    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, boolean status) {
+        super(abertaQtd, fechadaQtd, g, gorjeta, status);
         this.qtdClientes = qtdClientes;
         this.totalMesa = totalMesa; // total das contas de todos os clientes na mesa
-        this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
+        //this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
         //this.tempClientes = new int[qtdClientes]; // controle de clientes na mesa
         this.tempClientes = new ArrayList<>();
     }
 
-    public boolean getStatusMesa() {
+    /*public boolean getStatusMesa() {
         return status;
     }
 
     public void setStatusMesa(boolean statusMesa) {
         this.status = statusMesa;
-    }
-
+    }*/
     public void fecharContaMesa() {
         this.setTotalMesa();
         this.setGorjeta();
@@ -43,11 +42,14 @@ public class Mesa extends Service {
         System.out.println("");
 
         this.tempClientes.clear();
-        this.status = false;
+        //this.status = false;
+        this.setStatus(false);
         this.totalMesa = 0;
-        this.gorjeta = 0;
+        //this.gorjeta = 0;
+        this.zerarGorjeta();
         this.qtdClientes = 0;
-        this.garcom = 0;
+        //this.garcom = 0;
+        this.setGarcom(0);
     }
 
     public int getQtdClientes() {
@@ -77,8 +79,9 @@ public class Mesa extends Service {
 
     @Override
     public void print() {
-        System.out.println("Mesa Ocupada: " + this.getStatusMesa());
-        System.out.println("Numero do Garcom: " + this.garcom);
+        System.out.println("Mesa Ocupada: " + this.getStatus());
+        //System.out.println("Numero do Garcom: " + this.garcom);
+        System.out.println("Numero do Garcom: " + this.getGarcom());
         System.out.println("Quantidade de Clientes: " + this.qtdClientes);
         System.out.println("");
     }
