@@ -8,8 +8,6 @@ package fecha_conta;
 
 import java.util.ArrayList;
 
-
-
 public class Restaurante {
 
     ArrayList<Mesa> listaMesa;

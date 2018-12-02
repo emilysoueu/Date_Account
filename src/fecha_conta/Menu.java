@@ -1,15 +1,8 @@
 
 package fecha_conta;
-
-import java.util.ArrayList;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.util.Scanner;
 import java.util.Scanner;
 
 /**
@@ -23,22 +16,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
 
 
-     /////////////////////////////==========FILES==========//////////////////////////////////////////////////////
-    
-    /*
-    @novoArquivo = caminho da pasta onde vai ser gerado novo arquivo
-    */
-    
-      public void escritor(String novoArquivo, String relatorios) throws IOException{
-        try (BufferedWriter buffEscreve = new BufferedWriter (new FileWriter(novoArquivo))) {
-            String linha = "";               
-            linha = relatorios;
-            buffEscreve.append(linha + "\n");
-        }
-    }
-    
-      
-      ////////////////////////////////////////////////////////////////////////////////////////////////>>>>>>> Stashed changes
     Scanner in = new Scanner(System.in);
 
     public void menu() {
@@ -92,6 +69,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     menuRelatorio();
                 }
+       
                 break;
             }
         } while (manager != 0);
@@ -494,12 +472,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
      @Override
     public String toString() {
         String bos = "";
+        
         bos += "Relatórios";
-        bos += "\n";
+        bos += "\n\n\n";
         bos += "RELATORIO BALCAO:";
         bos += "\n";
         bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
-        bos += "\n";
+        bos += "\n\n\n";
         bos += "RELATORIO POR MESA:";
         bos += "\n";
          int i = 1;
@@ -511,6 +490,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             this.pagamentototal += aux.getTotal();
         }
         
+        bos += "\n\n\n";
         bos +="RELATORIO GARÇOM";
         bos += "\n";
         for (i = 0; i < 5; i++) {
@@ -518,9 +498,10 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             bos += "\n";
         }
 
-        bos += "\n";
+        bos += "\n\n\n";
+        bos += "TOTAL";
+        bos += "\n\n\n";
         bos += "Total Restaurante Poneis Dourados";
-        bos += "\n";
         bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
         bos += "\n";
         bos += "Total Diário (Pagamentos): " + this.pagamentototal;

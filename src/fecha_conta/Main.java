@@ -4,13 +4,12 @@
 package fecha_conta;
 
 
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileOutputStream;
-import java.util.Scanner;
+
 
 
 public class Main {
@@ -21,8 +20,7 @@ public class Main {
         Menu menu = new Menu(2, 0, 4, 0, 0, 0); // mesmo construtor de restaurante
 
         menu.menu(); 
-        String nomeArquivo = "Relatorio Poneis Dourados.txt";
-        
+        String nomeArquivo = "Relatorio Poneis Dourados.txt";        
        
         // manipulação de arquivos ============ Escrita======================//        
         try{
@@ -37,13 +35,7 @@ public class Main {
         
          // manipulação de arquivos ============ Leitura ======================//   
          
-         // colocar aqui o caminho do arquivo
-         
-         Scanner in = new Scanner("System.in");
-         
-         //System.out.println("Insira o nome doa arquivo");
-         //nomeArquivo = in.nextLine();
-         
+                 
          // Printando conteúdo do arquivo
          System.out.println("\nLeitura Relatório Poneis Dourados: ");
          try{
