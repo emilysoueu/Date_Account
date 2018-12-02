@@ -36,6 +36,7 @@ public class Mesa extends Service {
         this.setTotalMesa();
         this.setGorjeta();
         this.setTempGorjeta();
+
         //this.print();
         System.out.println("### VALOR TOTAL MESA ###");
         System.out.println("Valor Total: " + this.totalMesa);
@@ -46,6 +47,8 @@ public class Mesa extends Service {
         this.status = false;
         this.totalMesa = 0;
         this.gorjeta = 0;
+        this.qtdClientes = 0;
+        this.garcom = 0;
     }
 
     public int getQtdClientes() {
