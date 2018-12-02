@@ -311,6 +311,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("### MESA ATENDIDA ###");
         xMesa.print();
     }
+    
+    void menuEditarMesa() {
+        int numMesa;
+        System.out.println("Informe o numero da mesa:");
+        numMesa = in.nextInt();
 
     void menuEditarMesa() {
         int numMesa;
@@ -414,7 +419,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("Digite o numero da conta ");
         int numCliente = in.nextInt();
 
-        Clientes xCliente = this.bar.getCliente(numCliente);
+        Clientes xCliente = this.bar.getCliente(numCliente-1);
         int pedido, del;
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
@@ -452,7 +457,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     System.out.println("\n..............Informe o numero do Item:......");
                     del = in.nextInt();
-                    xCliente.delItem(del);
+                    xCliente.delItem(del-1);
                 }
                 break;
             }
