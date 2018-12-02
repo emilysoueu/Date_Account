@@ -283,7 +283,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         //int i=1;
         for (Clientes aux : xMesa.tempClientes) {
             //System.out.println("\nPEDIDO CLIENTE Nº"+ i++ +": ");
-            System.out.println("\nPEDIDO CLIENTE Nº" + aux.num + ": ");
+            System.out.println("\nPEDIDO CLIENTE Nº" + aux.getNum() + ": ");
 
             do {
                 System.out.println("");
@@ -384,6 +384,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         garcom = in.nextInt();
 
         Clientes xCliente = this.abrirContaBalcao(garcom);
+        System.out.println("\nPEDIDO CLIENTE Nº" + xCliente.getNum() + ": ");
         do {
             System.out.println("");
             System.out.println("NOVO PEDIDO - [0]Sair ");

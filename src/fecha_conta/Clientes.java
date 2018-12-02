@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 public class Clientes {
 
-    boolean statusConta; //true aberta
+    private boolean statusConta; //true aberta    
+    private int garcom;
+    private double total;
+    private double gorjeta;
+    private int num;
+
     ArrayList<Item> listaItens;
-    int garcom;
-    double total;
-    double gorjeta;
-    int num;
     //int Atendimento;// 0 = Balcao e 1 = Mesa
 
     public Clientes(boolean statusConta, int garcom, int num/*, int Atendimento*/) {
@@ -43,9 +44,18 @@ public class Clientes {
         return statusConta;
     }
 
-    /*public void setStatusConta(boolean statusConta) {
+    public void setStatusConta(boolean statusConta) {
         this.statusConta = statusConta;
-    }*/
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
     public void fecharContaCliente() {
         this.statusConta = false;
         this.setTotal();

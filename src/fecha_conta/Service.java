@@ -58,7 +58,7 @@ public class Service {
     public void setTotalAberto() {
         int t = 0;
         for (Clientes aux : listaCliente) {
-            if (aux.statusConta == true) {
+            if (aux.getStatusConta() == true) {
                 t += 1;
             }
         }
@@ -68,7 +68,7 @@ public class Service {
     public void setTotalFechado() {
         int t = 0;
         for (Clientes aux : listaCliente) {
-            if (aux.statusConta == false) {
+            if (aux.getStatusConta() == false) {
                 t += 1;
             }
         }
@@ -102,7 +102,7 @@ public class Service {
     public void relatorioAberto() {
         int i = 1;
         for (Clientes aux : this.listaCliente) {
-            if (aux.statusConta == true) {
+            if (aux.getStatusConta() == true) {
                 System.out.println("Cliente Nº" + i++ + ": ");
                 aux.printCliente();
                 aux.printPedido();
@@ -116,7 +116,7 @@ public class Service {
 
         int i = 0;
         for (Clientes aux : this.listaCliente) {
-            if (aux.statusConta == true) {
+            if (aux.getStatusConta() == true) {
                 i += 1;
             }
         }

@@ -63,8 +63,8 @@ public class Mesa extends Service {
     }
 
     public void setTotalMesa() {
-        for (Clientes temp : tempClientes) {
-            this.totalMesa += temp.total;
+        for (Clientes aux : tempClientes) {
+            this.totalMesa += aux.getTotal();
         }
         this.totalMesa = totalMesa;
     }
