@@ -192,40 +192,7 @@ public class Restaurante {
         }
     }
 
-    //============ teste arquivos====================//
-    @Override
-    public String toString() {
-        String bos = "";
-        bos += "RELATORIO BALCAO:";
-        bos += "\n";
-        bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
-        bos += "\n";
-        bos += "RELATORIO POR MESA:";
-        bos += "\n";
-        for (Mesa aux : this.listaMesa) {
-            int i = 1;
-            aux.setGorjeta();
-            bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + " | Pagamentos: " + aux.getTotal();
-            System.out.println("");
-            this.gorjetatotal += aux.getGorjeta();
-            this.pagamentototal += aux.getTotal();
-        }
-
-        bos += "\n";
-        bos += "Total Restaurante Poneis Dourados";
-        bos += "\n";
-        bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
-        bos += "\n";
-        bos += "Total Diário (Pagamentos): " + this.pagamentototal;
-        bos += "\n";
-        bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
-        bos += "\n";
-        bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
-        bos += "\n";
-
-        return bos;
-    }
-
+    
     //o Emitir total apurado no dia
     public void relatorioFinal() {
         this.bar.setGorjeta();
@@ -263,5 +230,40 @@ public class Restaurante {
             System.out.println("");
         }
     }
+    
+    //============ teste arquivos====================//
+    @Override
+    public String toString() {
+        String bos = "";
+        bos += "RELATORIO BALCAO:";
+        bos += "\n";
+        bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
+        bos += "\n";
+        bos += "RELATORIO POR MESA:";
+        bos += "\n";
+        for (Mesa aux : this.listaMesa) {
+            int i = 1;
+            aux.setGorjeta();
+            bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + " | Pagamentos: " + aux.getTotal();
+            System.out.println("");
+            this.gorjetatotal += aux.getGorjeta();
+            this.pagamentototal += aux.getTotal();
+        }
+
+        bos += "\n";
+        bos += "Total Restaurante Poneis Dourados";
+        bos += "\n";
+        bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
+        bos += "\n";
+        bos += "Total Diário (Pagamentos): " + this.pagamentototal;
+        bos += "\n";
+        bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
+        bos += "\n";
+        bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
+        bos += "\n";
+
+        return bos;
+    }
+
 
 }

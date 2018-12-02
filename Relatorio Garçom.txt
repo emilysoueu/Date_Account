@@ -1,9 +1,0 @@
-RELATORIO BALCAO:
-Gorjeta:0.0 | Pagamentos: 0.0
-RELATORIO POR MESA:
-Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0Gorjeta Mesa 1: 0.0 | Pagamentos: 0.0
-Total Restaurante Poneis Dourados
-0.0
-Total Diário (Pagamentos): 0.0
-Total Diário (Gorjeta): 0.0
-Total Diário (Pagamentos + Gorjeta): 0.0
