@@ -13,12 +13,12 @@ import java.util.Scanner;
  */
 public class Menu extends Restaurante {  // usar o mesmo construtor de Restaurante
 
-    Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double  totalrestaurante) {
-        super(numGarcom, NumItens, numMesas,gorjetatotal,pagamentototal,totalrestaurante);
+    Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
+        super(numGarcom, NumItens, numMesas, gorjetatotal, pagamentototal, totalrestaurante);
     }
-    
+
     Scanner in = new Scanner(System.in);
-    
+
     public void menu() {
         int menu, user, manager;
         int numMesa;
@@ -28,28 +28,28 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[2]Usuário...........................................");
             System.out.println(".............[0]Sair..............................................");
             user = in.nextInt();
-            
+
             switch (user) {
                 // Interface Gerente
                 case 1: {
-                    
+
                     menuManager();
-                    
+
                 }// fim case 1
                 break;
 
                 // Interface Cliente
                 case 2: {
-                    
+
                     menuClient();
-                    
+
                 }//fim case 2
                 break;
-                
+
             }// fim switchc user
         } while (user != 0);
     }
-    
+
     void menuManager() {
         int manager = 0;
         int numMesa;
@@ -59,7 +59,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[2]Relatorios........................................");
             System.out.println(".............[0]Voltar............................................");
             manager = in.nextInt();
-            
+
             switch (manager) {
                 // descrição de uma mesa especifica
                 case 1: {
@@ -74,7 +74,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (manager != 0);
     }
-    
+
     void menuDescricao() {
         int manager = 0;
         int numMesa;
@@ -85,7 +85,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[3]Descrição Restaurante.............................");
             System.out.println(".............[0]Voltar............................................");
             manager = in.nextInt();
-            
+
             switch (manager) {
                 // descrição de uma mesa especifica
                 case 1: {
@@ -109,7 +109,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (manager != 0);
     }
-    
+
     void menuRelatorio() {
         int manager = 0;
         //int numMesa;
@@ -120,7 +120,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[3]Garcom............................................");
             System.out.println(".............[0]Voltar............................................");
             manager = in.nextInt();
-            
+
             switch (manager) {
                 // relatorio de contas em aberto
                 case 1: {
@@ -139,7 +139,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (manager != 0);
     }
-    
+
     void menuClient() {
         int menu;
         do {
@@ -151,7 +151,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[0]Voltar............................................");
             menu = in.nextInt();
             switch (menu) {
-                
+
                 case 1: {
                     menuAbrirConta();
                 }
@@ -168,7 +168,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (menu != 0);
     }
-    
+
     void menuAbrirConta() {
         int menu;
         do {
@@ -190,7 +190,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (menu != 0);
     }
-    
+
     void menuFecharConta() {
         int menu;
         int numMesa;
@@ -221,24 +221,24 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     numCliente = in.nextInt();
                     Clientes auxCliente = this.bar.getCliente(numCliente);
                     double gorjetatemp;
-                    
+
                     System.out.println("Digite o valor da Gorjeta");
                     gorjetatemp = in.nextDouble();
                     auxCliente.setGorjeta(gorjetatemp);
                     System.out.println("### FECHAMENTO DE CONTA ###");
                     this.fecharContaBalcao(numCliente, gorjetatemp);
-                    
+
                     int listaAberto = this.bar.getTotalAberto();
                     if (listaAberto == 0) {
                         this.bar.setStatus(false);
                     }
-                    
+
                 }
                 break;
             }
         } while (menu != 0);
     }
-    
+
     void menuEditarConta() {
         int menu;
         do {
@@ -260,16 +260,16 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (menu != 0);
     }
-    
+
     void menuMesa() {
         int qtdCliente = 0;
         int garcom;
         int numMesa;
-        
+
         int numItem; // recebe pedidos do cliente
         int qtdItem;
         double valorUni;
-        
+
         System.out.println("Informe a quantidade de Clientes na mesa:");
         qtdCliente = in.nextInt();
         System.out.println("Informe o numero do garçom para atendê - lo:");
@@ -281,36 +281,36 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
         xMesa.setGarcom(garcom);
         xMesa.setQtdClientes(qtdCliente);
-        
+
         for (Clientes aux : xMesa.tempClientes) {
-            
+
             do {
                 System.out.println("");
                 System.out.println("NOVO PEDIDO - [0]Sair ");
-                //System.out.println("");
+                this.cardapio();
                 System.out.println("Numero do item: ");
                 numItem = in.nextInt();
-                
+
                 if (numItem == 0) {
                     break;
                 }
-                
+
                 System.out.println("Quantidade do item: ");
                 qtdItem = in.nextInt();
-                
-                System.out.println("Qual o valor unitário do item: ");
-                valorUni = in.nextDouble();
-                
+
+                valorUni = this.matrizCardapio[numItem - 1];
+
                 aux.addPedido(numItem, qtdItem, valorUni);
-                
-            } while (numItem != 0);            
+
+                aux.printPedido();
+
+            } while (numItem != 0);
         }
-        
+
         System.out.println("### MESA ATENDIDA ###");
         xMesa.print();
-        
     }
-    
+
     void menuBalcao() {
         int garcom;
         //int pessoa;
@@ -319,7 +319,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int numItem; // recebe pedidos do cliente
         int qtdItem;
         double valorUni;
-        
+
         System.out.println("Informe o numero do garçom para atendê-lo:");
         garcom = in.nextInt();
 
@@ -327,34 +327,34 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         do {
             System.out.println("");
             System.out.println("NOVO PEDIDO - [0]Sair ");
+            this.cardapio();
             System.out.println("Numero do item: ");
             numItem = in.nextInt();
-            
+
             if (numItem == 0) {
                 break;
             }
-            
+
             System.out.println("Quantidade do item: ");
             qtdItem = in.nextInt();
-            
-            System.out.println("Qual o valor unitário do item: ");
-            valorUni = in.nextDouble();
-            
+
+            valorUni = this.matrizCardapio[numItem - 1];
+
             xCliente.addPedido(numItem, qtdItem, valorUni);
-            
+            xCliente.printPedido();
+
         } while (numItem != 0);
-        
+
         System.out.println("### CLIENTE ATENDIDO ###");
         xCliente.printCliente();
-        xCliente.printPedido();
-        
+        //xCliente.printPedido();        
     }
-    
+
     void menuEditarBalcao() {
-        
+
         System.out.println("Digite o numero da conta ");
         int numCliente = in.nextInt();
-        
+
         Clientes xCliente = this.bar.getCliente(numCliente);
         int pedido, del;
         do {
@@ -363,7 +363,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[0]Sair..............................................");
             pedido = in.nextInt();
             switch (pedido) {
-                
+
                 case 1: {
                     int numItem; // recebe pedidos do cliente
                     int qtdItem;
@@ -373,25 +373,25 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         System.out.println("NOVO PEDIDO - [0]Sair ");
                         System.out.println("Numero do item: ");
                         numItem = in.nextInt();
-                        
+
                         if (numItem == 0) {
                             break;
                         }
-                        
+
                         System.out.println("Quantidade do item: ");
                         qtdItem = in.nextInt();
-                        
+
                         System.out.println("Qual o valor unitário do item: ");
                         valorUni = in.nextDouble();
-                        
+
                         xCliente.addPedido(numItem, qtdItem, valorUni);
-                        
+
                     } while (numItem != 0);
-                    
+
                     System.out.println("### CLIENTE ATENDIDO ###");
                     xCliente.printCliente();
                     xCliente.printPedido();
-                    
+
                 }
                 break;
                 case 2: {
@@ -401,13 +401,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 }
                 break;
             }
-            
+
             System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
             xCliente.printCliente();
             xCliente.printPedido();
-            
+
         } while (pedido != 0);
-        
+
     }
 
     /*void menuEditarMesa() {

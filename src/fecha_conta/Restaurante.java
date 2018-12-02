@@ -31,14 +31,15 @@ public class Restaurante {
         }
     }
 
-    void cardapio() {
-        System.out.println(" Item 1 ---- $1");
-        System.out.println(" Item 2 ---- $200");
-        System.out.println(" Item 3 ---- $500");
+    public void cardapio() {
+        System.out.println("........Cardápio.......");
+        System.out.println("1 - Pizza--------- $50");
+        System.out.println("2 - Lazanha------- $40");
+        System.out.println("3 - Macarronada--- $30");
 
-        this.matrizCardapio[0] = 1;
-        this.matrizCardapio[1] = 200;
-        this.matrizCardapio[2] = 500;
+        this.matrizCardapio[0] = 50;
+        this.matrizCardapio[1] = 40;
+        this.matrizCardapio[2] = 30;
     }
 
     public Balcao getBar() {
