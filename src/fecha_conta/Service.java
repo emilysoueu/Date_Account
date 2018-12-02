@@ -80,7 +80,7 @@ public class Service {
         }
     }
 
-    void clienteDelItem(int numCliente, int numItem) {
+    /*void clienteDelItem(int numCliente, int numItem) {
         int i = 1;
         for (Clientes aux : this.listaCliente) {
             i++;
@@ -89,19 +89,14 @@ public class Service {
                 System.out.println("\n Item alterado com sucesso\n");
             }
         }
-    }
-
+    }*/
     public void relatorioAberto() {
-        if (this.listaCliente.isEmpty()) {
-            System.out.println("Não há Clientes");
-            return;
-        }
+        int i = 1;
         for (Clientes aux : this.listaCliente) {
             if (aux.statusConta == true) {
+                System.out.println("Cliente Nº" + i++ + ": ");
                 aux.printCliente();
-                System.out.println("");
                 aux.printPedido();
-                System.out.println("");
             }
         }
     }
@@ -109,7 +104,15 @@ public class Service {
     public void print() {
         System.out.println("Ocupado(a): " + this.status);
         System.out.println("Numero do Garcom: " + this.garcom);
-        System.out.println("Quantidade de Clientes: " + this.listaCliente.size());
+
+        int i = 0;
+        for (Clientes aux : this.listaCliente) {
+            if (aux.statusConta == true) {
+                i += 1;
+            }
+        }
+        //System.out.println("Quantidade de Clientes: " + this.listaCliente.size());
+        System.out.println("Quantidade de Clientes: " + i);
         System.out.println("");
     }
 
