@@ -4,8 +4,6 @@ package fecha_conta;
  *
  * @author emilysoueu, fernandodojo, kellyberreca
  */
-
-
 import java.util.ArrayList;
 
 public class Restaurante {
@@ -31,7 +29,6 @@ public class Restaurante {
             this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, false));
         }
     }
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     public void cardapio() {
@@ -74,7 +71,7 @@ public class Restaurante {
     }
 
     public Clientes abrirContaBalcao(int garcom) {
-        Clientes c = new Clientes(true, garcom);
+        Clientes c = new Clientes(true, garcom, this.bar.listaCliente.size());
         this.bar.listaCliente.add(c);
         this.bar.setGarcom(garcom);
         this.bar.setStatus(true);
@@ -89,7 +86,7 @@ public class Restaurante {
         atual.setStatus(true);
 
         for (int i = 0; i < qtdClientes; i++) {
-            Clientes c = new Clientes(true, garcom);
+            Clientes c = new Clientes(true, garcom, atual.tempClientes.size());
             atual.listaCliente.add(c);
             atual.tempClientes.add(c);
         }
@@ -171,7 +168,6 @@ public class Restaurante {
         }
     }
 
-    
     //o Emitir total apurado no dia
     public void relatorioFinal() {
         this.bar.setGorjeta();
@@ -208,8 +204,6 @@ public class Restaurante {
             System.out.println("Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i]);
             System.out.println("");
         }
-    }   
-   
-
+    }
 
 }

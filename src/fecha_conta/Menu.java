@@ -1,5 +1,5 @@
-
 package fecha_conta;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -13,8 +13,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
         super(numGarcom, NumItens, numMesas, gorjetatotal, pagamentototal, totalrestaurante);
     }
-
-
 
     Scanner in = new Scanner(System.in);
 
@@ -69,7 +67,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     menuRelatorio();
                 }
-       
+
                 break;
             }
         } while (manager != 0);
@@ -228,10 +226,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     System.out.println("### FECHAMENTO DE CONTA ###");
 
                     //this.fecharContaBalcao(numCliente, gorjetatemp); //======== FECHANDO A CONTA DUAS VEZES ========//
-
-
                     this.fecharContaBalcao(numCliente, gorjetatemp); //======== FILES ========//
-                    
 
                     int listaAberto = this.bar.getTotalAberto();
                     if (listaAberto == 0) {
@@ -285,7 +280,10 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         xMesa.setGarcom(garcom);
         xMesa.setQtdClientes(qtdCliente);
 
+        //int i=1;
         for (Clientes aux : xMesa.tempClientes) {
+            //System.out.println("\nPEDIDO CLIENTE Nº"+ i++ +": ");
+            System.out.println("\nPEDIDO CLIENTE Nº" + aux.num + ": ");
 
             do {
                 System.out.println("");
@@ -313,19 +311,19 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("### MESA ATENDIDA ###");
         xMesa.print();
     }
-    
+
     void menuEditarMesa() {
         int numMesa;
         System.out.println("Informe o numero da mesa:");
         numMesa = in.nextInt();
 
-        Mesa xMesa = this.listaMesa.get(numMesa-1);
-        
+        Mesa xMesa = this.listaMesa.get(numMesa - 1);
+
         System.out.println("Digite o numero da conta ");
         int numCliente = in.nextInt();
 
-        Clientes xCliente = xMesa.tempClientes.get(numCliente-1);
-               
+        Clientes xCliente = xMesa.tempClientes.get(numCliente - 1);
+
         int pedido, del;
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
@@ -408,7 +406,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         } while (numItem != 0);
 
         System.out.println("### CLIENTE ATENDIDO ###");
-        xCliente.printCliente();     
+        xCliente.printCliente();
     }
 
     void menuEditarBalcao() {
@@ -465,11 +463,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
         } while (pedido != 0);
     }
-    
-     @Override
+
+    @Override
     public String toString() {
         String bos = "";
-        
+
         bos += "Relatórios";
         bos += "\n\n\n";
         bos += "RELATORIO BALCAO:";
@@ -478,17 +476,17 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         bos += "\n\n\n";
         bos += "RELATORIO POR MESA:";
         bos += "\n";
-         int i = 1;
-        for (Mesa aux : this.listaMesa) {           
+        int i = 1;
+        for (Mesa aux : this.listaMesa) {
             aux.setGorjeta();
             bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + "   | Pagamentos: " + aux.getTotal();
             bos += "\n";
             this.gorjetatotal += aux.getGorjeta();
             this.pagamentototal += aux.getTotal();
         }
-        
+
         bos += "\n\n\n";
-        bos +="RELATORIO GARÇOM";
+        bos += "RELATORIO GARÇOM";
         bos += "\n";
         for (i = 0; i < 5; i++) {
             bos += "Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i];
@@ -510,5 +508,5 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
         return bos;
     }
-    
+
 }

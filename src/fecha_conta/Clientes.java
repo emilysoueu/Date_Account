@@ -13,13 +13,15 @@ public class Clientes {
     int garcom;
     double total;
     double gorjeta;
+    int num;
     //int Atendimento;// 0 = Balcao e 1 = Mesa
 
-    public Clientes(boolean statusConta, int garcom/*, int Atendimento*/) {
+    public Clientes(boolean statusConta, int garcom, int num/*, int Atendimento*/) {
         this.statusConta = statusConta;
         this.garcom = garcom;
         //this.Atendimento = Atendimento; // 0 = Balcao e 1 = Mesa
         this.listaItens = new ArrayList<>();
+        this.num = num + 1;
     }
 
     // ============================métodos===============================//
@@ -82,6 +84,7 @@ public class Clientes {
     }
 
     public void printCliente() {
+        System.out.println("Numero do Cliente: " + this.num);
         System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Conta em Aberto: " + this.statusConta);
         System.out.println("Quantidade de Pedidos: " + this.listaItens.size());
