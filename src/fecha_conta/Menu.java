@@ -227,7 +227,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     auxCliente.setGorjeta(gorjetatemp);
                     System.out.println("### FECHAMENTO DE CONTA ###");
 
-                    this.fecharContaBalcao(numCliente, gorjetatemp);
+                    //this.fecharContaBalcao(numCliente, gorjetatemp); //======== FECHANDO A CONTA DUAS VEZES ========//
 
 
                     this.fecharContaBalcao(numCliente, gorjetatemp); //======== FILES ========//
@@ -237,7 +237,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     if (listaAberto == 0) {
                         this.bar.setStatus(false);
                     }
-
                 }
                 break;
             }
@@ -282,7 +281,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("Informe o numero da mesa:");
         numMesa = in.nextInt();
 
-        // Mesa xMesa = new Mesa(qtdCliente,0,1,qtdCliente,garcom,numMesa,true);
         Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
         xMesa.setGarcom(garcom);
         xMesa.setQtdClientes(qtdCliente);
@@ -332,7 +330,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
             System.out.println(".............[2]Deletar Item Pedido................--------------.");
-            System.out.println(".............[0]Sair..............................................");
+            System.out.println(".............[0]Voltar............................................");
             pedido = in.nextInt();
             switch (pedido) {
 
@@ -365,7 +363,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     System.out.println("\n..............Informe o numero do Item:......");
                     del = in.nextInt();
-                    xCliente.delItem(del-1);
+                    xCliente.delItem(del);
                 }
                 break;
             }
@@ -456,7 +454,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     System.out.println("\n..............Informe o numero do Item:......");
                     del = in.nextInt();
-                    xCliente.delItem(del-1);
+                    xCliente.delItem(del);
                 }
                 break;
             }
@@ -466,7 +464,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             xCliente.printPedido();
 
         } while (pedido != 0);
-
     }
     
      @Override

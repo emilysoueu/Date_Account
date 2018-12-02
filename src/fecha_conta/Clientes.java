@@ -30,8 +30,9 @@ public class Clientes {
 
     public void delItem(int itemtemp) {
         for (Item aux : this.listaItens) {
-            if (itemtemp == aux.getNumItem()) {
+            if (aux.getNumItem() == itemtemp) {
                 this.listaItens.remove(aux);
+                break;
             }
         }
     }
