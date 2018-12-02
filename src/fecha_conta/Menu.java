@@ -475,11 +475,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         xCliente.printPedido();
 
                     } while (numItem != 0);
-
-                    System.out.println("### CLIENTE ATENDIDO ###");
-                    xCliente.printCliente(); 
-                    xCliente.printPedido();
-
                 }
                 break;
                 case 2: {
@@ -498,52 +493,4 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     }
     
-
-    /*void menuEditarMesa() {
-        do {
-            System.out.println("............Editar Pedido......................");
-            System.out.println("............[1]SIM.............................");
-            System.out.println("............[0]NÃO.............................");
-            int edit = in.nextInt();
-            switch (edit) {
-
-                case 1: {
-                    System.out.println("\n................Informe o Cliente que deseja alterar pedido:");
-                    pessoa = in.nextInt();
-                    int pedido, del;
-                    System.out.println("............[1]Adicionar Pedido ...................");
-                    System.out.println("............[2]Deletar Item Pedido.................");
-                    pedido = in.nextInt();
-                    switch (pedido) {
-
-                        case 1: {
-
-                        }
-                        break;
-                        case 2: {
-
-                            System.out.println("\n..............Informe o numero do Item:......");
-                            del = in.nextInt();
-                            bar.clienteDelItem(pessoa, del);
-
-                        }
-                        break;
-                    }
-
-                    System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
-                    xCliente.printCliente();
-                    xCliente.printPedido();
-                }
-                break;
-                case 0:
-                    break;
-            }
-        } while (garcom != 0);
-
-    }*/
-    
-  
-    
-    
-
 }
