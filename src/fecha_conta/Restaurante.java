@@ -44,10 +44,10 @@ public class Restaurante {
 
     public void setBar(Balcao bar) {
         this.bar = bar;
-    }  
-     
-    public Mesa getMesa(int numMesa){
-        return this.listaMesa.get(numMesa-1);
+    }
+
+    public Mesa getMesa(int numMesa) {
+        return this.listaMesa.get(numMesa - 1);
     }
 
     public double getValorGarcomMatriz(int indice) {
@@ -69,6 +69,8 @@ public class Restaurante {
     public Clientes abrirContaBalcao(int garcom) {
         Clientes c = new Clientes(true, garcom);
         this.bar.listaCliente.add(c);
+        this.bar.setGarcom(garcom);
+        this.bar.setStatus(true);
         return c;
     }
 
@@ -77,7 +79,7 @@ public class Restaurante {
 
         atual.setGarcom(garcom);
         atual.setQtdClientes(qtdClientes);
-        atual.status = true;
+        atual.setStatus(true);
 
         for (int i = 0; i < qtdClientes; i++) {
             Clientes c = new Clientes(true, garcom);
@@ -87,11 +89,11 @@ public class Restaurante {
         return atual;
     }
 
-    public void fecharContaBalcao(int numCliente) {
+    public void fecharContaBalcao(int numCliente, double gorjeta) {
         Clientes atual = this.bar.listaCliente.get(numCliente - 1);
         atual.fecharContaCliente();
         int numGarcom = atual.getGarcom();
-        matrizGarcom[numGarcom - 1] += atual.getGorjeta();
+        matrizGarcom[numGarcom - 1] += gorjeta;
     }
 
     public void fecharContaMesa(int numMesa) {
@@ -104,7 +106,7 @@ public class Restaurante {
             System.out.println("");
             int numGarcom = aux.getGarcom();
             matrizGarcom[numGarcom - 1] += aux.getGorjeta();
-        }        
+        }
         mesaAtual.fecharContaMesa();
         System.out.println("");
     }
@@ -164,7 +166,6 @@ public class Restaurante {
     public void relatorioAberto() {
         System.out.println("CONTAS EM ABERTO - BALCAO");
         bar.relatorioAberto();
-        System.out.println("");
 
         System.out.println("CONTAS EM ABERTO - MESA");
         int i = 1;
@@ -192,7 +193,7 @@ public class Restaurante {
     //o Emitir relatório de gorjetas por garçom
     public void relatorioGarcom() {
         for (int i = 0; i < 5; i++) {
-            System.out.println("Gorjeta Garcom Nº" + i + ": " + matrizGarcom[i]);
+            System.out.println("Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i]);
             System.out.println("");
         }
     }
