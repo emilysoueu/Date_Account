@@ -7,6 +7,18 @@ package fecha_conta;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.util.Scanner;
+
 public class Restaurante {
 
     ArrayList<Mesa> listaMesa;
@@ -30,6 +42,23 @@ public class Restaurante {
             this.listaMesa.add(new Mesa(0, 0, 0, 0, 0, 0, false));
         }
     }
+    /////////////////////////////==========FILES==========//////////////////////////////////////////////////////
+    
+    /*
+    @novoArquivo = caminho da pasta onde vai ser gerado novo arquivo
+    */
+    
+      public void escritor(String novoArquivo, String relatorios) throws IOException{
+        try (BufferedWriter buffEscreve = new BufferedWriter (new FileWriter(novoArquivo))) {
+            String linha = "";               
+            linha = relatorios;
+            buffEscreve.append(linha + "\n");
+        }
+    }
+    
+      
+      ////////////////////////////////////////////////////////////////////////////////////////////////
+    
 
     public void cardapio() {
         System.out.println("........Cardápio.......");
@@ -168,6 +197,20 @@ public class Restaurante {
         }
     }
 
+    
+    //============ teste arquivos====================//
+    
+    @Override
+    public String toString(){
+        String bos = "";
+        bos += "RELATORIO BALCAO:";
+        bos += "\n";
+        bos+= "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
+        bos += "\n";
+        
+        return bos;
+    }
+    
     //o Emitir total apurado no dia
     public void relatorioFinal() {
         this.bar.setGorjeta();
@@ -205,5 +248,7 @@ public class Restaurante {
             System.out.println("");
         }
     }
+    
+   
 
 }

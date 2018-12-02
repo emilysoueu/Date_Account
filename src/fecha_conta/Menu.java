@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fecha_conta;
 
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.util.Scanner;
 import java.util.Scanner;
 
 /**
- *
  * @author emilysoueu
  */
 public class Menu extends Restaurante {  // usar o mesmo construtor de Restaurante
@@ -16,7 +20,27 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
         super(numGarcom, NumItens, numMesas, gorjetatotal, pagamentototal, totalrestaurante);
     }
+<<<<<<< Updated upstream
 
+=======
+    
+     /////////////////////////////==========FILES==========//////////////////////////////////////////////////////
+    
+    /*
+    @novoArquivo = caminho da pasta onde vai ser gerado novo arquivo
+    */
+    
+      public void escritor(String novoArquivo, String relatorios) throws IOException{
+        try (BufferedWriter buffEscreve = new BufferedWriter (new FileWriter(novoArquivo))) {
+            String linha = "";               
+            linha = relatorios;
+            buffEscreve.append(linha + "\n");
+        }
+    }
+    
+      
+      ////////////////////////////////////////////////////////////////////////////////////////////////
+>>>>>>> Stashed changes
     Scanner in = new Scanner(System.in);
 
     public void menu() {
@@ -226,8 +250,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     gorjetatemp = in.nextDouble();
                     auxCliente.setGorjeta(gorjetatemp);
                     System.out.println("### FECHAMENTO DE CONTA ###");
+<<<<<<< Updated upstream
                     this.fecharContaBalcao(numCliente, gorjetatemp);
 
+=======
+                    this.fecharContaBalcao(numCliente, gorjetatemp); //======== FILES ========//
+                    
+>>>>>>> Stashed changes
                     int listaAberto = this.bar.getTotalAberto();
                     if (listaAberto == 0) {
                         this.bar.setStatus(false);
@@ -389,7 +418,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     } while (numItem != 0);
 
                     System.out.println("### CLIENTE ATENDIDO ###");
-                    xCliente.printCliente();
+                    xCliente.printCliente(); 
                     xCliente.printPedido();
 
                 }
@@ -452,4 +481,9 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         } while (garcom != 0);
 
     }*/
+    
+  
+    
+    
+
 }
