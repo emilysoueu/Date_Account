@@ -54,8 +54,7 @@ public class Item {
         System.out.println("Numero do item: " + this.numItem);
         System.out.println("Quantidade do item: " + this.qtdItem);
         System.out.println("Valor Unitário: " + this.valorUni);
-        System.out.println("Valor Total: " + this.valorTot);
-        System.out.println("");
+        System.out.println("Valor Total Pedido: " + this.valorTot);
     }
 
 }

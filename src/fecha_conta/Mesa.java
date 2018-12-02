@@ -37,7 +37,7 @@ public class Mesa extends Service {
         this.setGorjeta();
         this.setTempGorjeta();
         //this.print();
-        System.out.println("");
+        System.out.println("### VALOR TOTAL MESA ###");
         System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("Gorjeta Total: " + this.tempGorjeta);
         System.out.println("");

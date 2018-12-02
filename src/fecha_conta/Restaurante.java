@@ -44,8 +44,8 @@ public class Restaurante {
 
     public void setBar(Balcao bar) {
         this.bar = bar;
-    }
-    
+    }  
+     
     public Mesa getMesa(int numMesa){
         return this.listaMesa.get(numMesa-1);
     }
@@ -96,14 +96,15 @@ public class Restaurante {
 
     public void fecharContaMesa(int numMesa) {
         Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
+        System.out.println("### FECHAMENTO DE CONTA ###");
         int i = 1;
         for (Clientes aux : mesaAtual.tempClientes) {
-            System.out.println("Cliente: " + i++);
+            System.out.println("# CLIENTE: " + i++);
             aux.fecharContaCliente();
             System.out.println("");
             int numGarcom = aux.getGarcom();
             matrizGarcom[numGarcom - 1] += aux.getGorjeta();
-        }
+        }        
         mesaAtual.fecharContaMesa();
         System.out.println("");
     }

@@ -26,9 +26,9 @@ public class Service {
         return garcom;
     }
 
-    public Clientes getCliente(int numCliente) {        
-        return this.listaCliente.get(numCliente -1);
-    }   
+    public Clientes getCliente(int numCliente) {
+        return this.listaCliente.get(numCliente - 1);
+    }
 
     public boolean isStatus() {
         return status;

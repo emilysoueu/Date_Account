@@ -48,6 +48,8 @@ public class Clientes {
         this.setTotal();
         this.getGorjeta();
         this.printCliente();
+        this.printPedido();
+        System.out.println("# Valor Total Cliente #");
         System.out.println("Valor Total:" + this.total);
         System.out.println("Gorjeta: " + this.gorjeta);
     }
@@ -87,7 +89,6 @@ public class Clientes {
 
     public void printPedido() {
         int i = 1;
-        System.out.println("");
         for (Item aux : this.listaItens) {
             System.out.println("PEDIDO NUMERO:" + i++);
             aux.printItem();
