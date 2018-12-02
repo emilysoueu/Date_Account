@@ -171,7 +171,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............Atendimento.........................................:");
             System.out.println(".............[1]Abrir Conta.......................................");
             System.out.println(".............[2]Fechar Conta......................................");
-            System.out.println(".............[2]Editar Conta......................................");
+            System.out.println(".............[3]Editar Conta......................................");
             System.out.println(".............[0]Voltar............................................");
             menu = in.nextInt();
             switch (menu) {
@@ -279,7 +279,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             menu = in.nextInt();
             switch (menu) {
                 case 1: {
-                    //menuEditarMesa();
+                    menuEditarMesa();
                 }
                 break;
                 case 2: {
@@ -339,11 +339,70 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("### MESA ATENDIDA ###");
         xMesa.print();
     }
+    
+    void menuEditarMesa() {
+        int numMesa;
+        System.out.println("Informe o numero da mesa:");
+        numMesa = in.nextInt();
+
+        Mesa xMesa = this.listaMesa.get(numMesa-1);
+        
+        System.out.println("Digite o numero da conta ");
+        int numCliente = in.nextInt();
+
+        Clientes xCliente = xMesa.tempClientes.get(numCliente-1);
+               
+        int pedido, del;
+        do {
+            System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
+            System.out.println(".............[2]Deletar Item Pedido................--------------.");
+            System.out.println(".............[0]Sair..............................................");
+            pedido = in.nextInt();
+            switch (pedido) {
+
+                case 1: {
+                    int numItem; // recebe pedidos do cliente
+                    int qtdItem;
+                    double valorUni;
+                    do {
+                        System.out.println("");
+                        System.out.println("NOVO PEDIDO - [0]Sair ");
+                        this.cardapio();
+                        System.out.println("Numero do item: ");
+                        numItem = in.nextInt();
+
+                        if (numItem == 0) {
+                            break;
+                        }
+
+                        System.out.println("Quantidade do item: ");
+                        qtdItem = in.nextInt();
+
+                        valorUni = this.matrizCardapio[numItem - 1];
+
+                        xCliente.addPedido(numItem, qtdItem, valorUni);
+                        xCliente.printPedido();
+
+                    } while (numItem != 0);
+                }
+                break;
+                case 2: {
+                    System.out.println("\n..............Informe o numero do Item:......");
+                    del = in.nextInt();
+                    xCliente.delItem(del-1);
+                }
+                break;
+            }
+
+            System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
+            xCliente.printCliente();
+            xCliente.printPedido();
+
+        } while (pedido != 0);
+    }
 
     void menuBalcao() {
         int garcom;
-        //int pessoa;
-        //Balcao bar = null;
 
         int numItem; // recebe pedidos do cliente
         int qtdItem;
@@ -375,8 +434,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         } while (numItem != 0);
 
         System.out.println("### CLIENTE ATENDIDO ###");
-        xCliente.printCliente();
-        //xCliente.printPedido();        
+        xCliente.printCliente();     
     }
 
     void menuEditarBalcao() {
@@ -384,7 +442,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         System.out.println("Digite o numero da conta ");
         int numCliente = in.nextInt();
 
-        Clientes xCliente = this.bar.getCliente(numCliente);
+        Clientes xCliente = this.bar.getCliente(numCliente-1);
         int pedido, del;
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
@@ -400,6 +458,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     do {
                         System.out.println("");
                         System.out.println("NOVO PEDIDO - [0]Sair ");
+                        this.cardapio();
                         System.out.println("Numero do item: ");
                         numItem = in.nextInt();
 
@@ -410,10 +469,10 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         System.out.println("Quantidade do item: ");
                         qtdItem = in.nextInt();
 
-                        System.out.println("Qual o valor unitário do item: ");
-                        valorUni = in.nextDouble();
+                        valorUni = this.matrizCardapio[numItem - 1];
 
                         xCliente.addPedido(numItem, qtdItem, valorUni);
+                        xCliente.printPedido();
 
                     } while (numItem != 0);
 
@@ -426,7 +485,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     System.out.println("\n..............Informe o numero do Item:......");
                     del = in.nextInt();
-                    xCliente.delItem(del);
+                    xCliente.delItem(del-1);
                 }
                 break;
             }
@@ -438,6 +497,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         } while (pedido != 0);
 
     }
+    
 
     /*void menuEditarMesa() {
         do {
