@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class Menu extends Restaurante {  // usar o mesmo construtor de Restaurante
 
-    Menu(int numGarcom, int NumItens, int numMesas) {
-        super(numGarcom, NumItens, numMesas);
+    Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double  totalrestaurante) {
+        super(numGarcom, NumItens, numMesas,gorjetatotal,pagamentototal,totalrestaurante);
     }
     
     Scanner in = new Scanner(System.in);
@@ -303,8 +303,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 
                 aux.addPedido(numItem, qtdItem, valorUni);
                 
-            } while (numItem != 0);
-            
+            } while (numItem != 0);            
         }
         
         System.out.println("### MESA ATENDIDA ###");
@@ -323,7 +322,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         
         System.out.println("Informe o numero do garçom para atendê-lo:");
         garcom = in.nextInt();
-        //this.abrirContaBalcao(garcom); // informar numero do garçom
 
         Clientes xCliente = this.abrirContaBalcao(garcom);
         do {
@@ -453,9 +451,5 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             }
         } while (garcom != 0);
 
-    }2
-    
-
-
-     */
+    }*/
 }
