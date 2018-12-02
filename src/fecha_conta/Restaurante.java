@@ -232,22 +232,32 @@ public class Restaurante {
     }
     
     //============ teste arquivos====================//
+    /*
     @Override
     public String toString() {
         String bos = "";
+        bos += "Relatórios";
+        bos += "\n";
         bos += "RELATORIO BALCAO:";
         bos += "\n";
         bos += "Gorjeta:" + bar.getGorjeta() + " | Pagamentos: " + bar.getTotal();
         bos += "\n";
         bos += "RELATORIO POR MESA:";
         bos += "\n";
-        for (Mesa aux : this.listaMesa) {
-            int i = 1;
+         int i = 1;
+        for (Mesa aux : this.listaMesa) {           
             aux.setGorjeta();
-            bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + " | Pagamentos: " + aux.getTotal();
-            System.out.println("");
+            bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + "   | Pagamentos: " + aux.getTotal();
+            bos += "\n";
             this.gorjetatotal += aux.getGorjeta();
             this.pagamentototal += aux.getTotal();
+        }
+        
+        bos +="RELATORIO GARÇOM";
+        bos += "\n";
+        for (i = 0; i < 5; i++) {
+            bos += "Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i];
+            bos += "\n";
         }
 
         bos += "\n";
@@ -264,6 +274,6 @@ public class Restaurante {
 
         return bos;
     }
-
+*/
 
 }

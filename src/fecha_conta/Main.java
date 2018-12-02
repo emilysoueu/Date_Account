@@ -27,8 +27,8 @@ public class Main {
         // manipulação de arquivos //
         
         try{
-            FileOutputStream saida = new FileOutputStream(new File("Relatorio Garçom.txt"));
-            byte[] b = churras.toString().getBytes();
+            FileOutputStream saida = new FileOutputStream(new File("Relatorio Poneis Dourados.txt"));
+            byte[] b = menu.toString().getBytes();
             saida.write(b);
         } catch (Exception e){
                         System.err.printf("An error occurred creating the file. %s.\n", e.getMessage());
