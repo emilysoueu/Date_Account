@@ -20,10 +20,9 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
         super(numGarcom, NumItens, numMesas, gorjetatotal, pagamentototal, totalrestaurante);
     }
-<<<<<<< Updated upstream
 
-=======
-    
+
+
      /////////////////////////////==========FILES==========//////////////////////////////////////////////////////
     
     /*
@@ -39,8 +38,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     }
     
       
-      ////////////////////////////////////////////////////////////////////////////////////////////////
->>>>>>> Stashed changes
+      ////////////////////////////////////////////////////////////////////////////////////////////////>>>>>>> Stashed changes
     Scanner in = new Scanner(System.in);
 
     public void menu() {
@@ -250,13 +248,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     gorjetatemp = in.nextDouble();
                     auxCliente.setGorjeta(gorjetatemp);
                     System.out.println("### FECHAMENTO DE CONTA ###");
-<<<<<<< Updated upstream
+
                     this.fecharContaBalcao(numCliente, gorjetatemp);
 
-=======
+
                     this.fecharContaBalcao(numCliente, gorjetatemp); //======== FILES ========//
                     
->>>>>>> Stashed changes
+
                     int listaAberto = this.bar.getTotalAberto();
                     if (listaAberto == 0) {
                         this.bar.setStatus(false);
