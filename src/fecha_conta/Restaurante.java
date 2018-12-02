@@ -75,7 +75,7 @@ public class Restaurante {
         this.bar = bar;
     }
 
-    public Mesa getMesa(int numMesa) {
+    public Mesa getMesa(int numMesa) {        
         return this.listaMesa.get(numMesa - 1);
     }
 
@@ -120,6 +120,10 @@ public class Restaurante {
 
     public void fecharContaBalcao(int numCliente, double gorjeta) {
         Clientes atual = this.bar.listaCliente.get(numCliente - 1);
+        if(atual.getStatusConta() == false){
+            System.out.println("Conta Fechada");
+            return;
+        }
         atual.fecharContaCliente();
         //this.bar.total += atual.getTotal();
         this.bar.setTotal(atual.getTotal());
@@ -129,6 +133,10 @@ public class Restaurante {
 
     public void fecharContaMesa(int numMesa) {
         Mesa mesaAtual = this.listaMesa.get(numMesa - 1);
+        if(mesaAtual.getStatus() == false){
+            System.out.println("Conta Fechada");
+            return;
+        }
         System.out.println("### FECHAMENTO DE CONTA ###");
         int i = 1;
         for (Clientes aux : mesaAtual.tempClientes) {

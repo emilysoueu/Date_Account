@@ -87,8 +87,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             switch (manager) {
                 // descrição de uma mesa especifica
                 case 1: {
-                    System.out.println(".............Informe O Numero da mesa:....................");
-                    numMesa = in.nextInt();
+                    do {
+                        System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
+                        numMesa = in.nextInt();
+                    } while (numMesa > this.listaMesa.size() || numMesa < 1);
+
                     Mesa aux = this.getMesa(numMesa);
                     aux.print();
                 }
@@ -202,11 +205,15 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             menu = in.nextInt();
             switch (menu) {
                 case 1: {
-                    System.out.println(".............Informe O Numero da mesa:..................");
-                    numMesa = in.nextInt();
-                    Mesa auxMesa = this.getMesa(numMesa);
+
+                    do {
+                        System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
+                        numMesa = in.nextInt();
+                    } while (numMesa > this.listaMesa.size() || numMesa < 1);
+
+                    Mesa xMesa = this.getMesa(numMesa);
                     double gorjetatemp;
-                    for (Clientes aux : auxMesa.tempClientes) {
+                    for (Clientes aux : xMesa.tempClientes) {
                         System.out.println("Digite o valor da Gorjeta");
                         gorjetatemp = in.nextDouble();
                         aux.setGorjeta(gorjetatemp);
@@ -215,8 +222,14 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 }
                 break;
                 case 2: {
-                    System.out.println(".............Informe O Numero da Conta:..................");
-                    numCliente = in.nextInt();
+                    System.out.println(".............Informe o numero da conta:..................");
+                    numCliente = in.nextInt();                   
+
+                    do {
+                        System.out.println("Digite o numero da conta:");
+                        numCliente = in.nextInt();
+                    } while (numCliente > this.bar.listaCliente.size() || numCliente < 1);
+
                     Clientes auxCliente = this.bar.getCliente(numCliente);
                     double gorjetatemp;
 
@@ -271,10 +284,16 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
         System.out.println("Informe a quantidade de Clientes na mesa:");
         qtdCliente = in.nextInt();
-        System.out.println("Informe o numero do garçom para atendê - lo:");
-        garcom = in.nextInt();
-        System.out.println("Informe o numero da mesa:");
-        numMesa = in.nextInt();
+
+        do {
+            System.out.println("Informe o numero do garçom para atendê - lo: ( 1 - 5 )");;
+            garcom = in.nextInt();
+        } while (garcom > this.matrizGarcom.length || garcom < 1);
+
+        do {
+            System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
+            numMesa = in.nextInt();
+        } while (numMesa > this.listaMesa.size() || numMesa < 1);
 
         Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
         xMesa.setGarcom(garcom);
@@ -287,8 +306,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 System.out.println("");
                 System.out.println("NOVO PEDIDO - [0]Sair ");
                 this.cardapio();
-                System.out.println("Numero do item: ");
-                numItem = in.nextInt();
+
+                do {
+                    System.out.println("Numero do item: ( 0 - 3 )");
+                    numItem = in.nextInt();
+                } while (numItem > this.matrizCardapio.length || numItem < 0);
 
                 if (numItem == 0) {
                     break;
@@ -312,13 +334,24 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     void menuEditarMesa() {
         int numMesa;
-        System.out.println("Informe o numero da mesa:");
-        numMesa = in.nextInt();
+        int numCliente;
+
+        do {
+            System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
+            numMesa = in.nextInt();
+        } while (numMesa > this.listaMesa.size() || numMesa < 1);
 
         Mesa xMesa = this.listaMesa.get(numMesa - 1);
+        
+        if(xMesa.getStatus() == false){
+            System.out.println("Conta Fechada\n");
+            return;
+        }
 
-        System.out.println("Digite o numero da conta ");
-        int numCliente = in.nextInt();
+        do {
+            System.out.println("Digite o numero da conta:");
+            numCliente = in.nextInt();
+        } while (numCliente > xMesa.tempClientes.size() || numCliente < 1);
 
         Clientes xCliente = xMesa.tempClientes.get(numCliente - 1);
 
@@ -338,8 +371,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         System.out.println("");
                         System.out.println("NOVO PEDIDO - [0]Sair ");
                         this.cardapio();
-                        System.out.println("Numero do item: ");
-                        numItem = in.nextInt();
+
+                        do {
+                            System.out.println("Numero do item: ( 0 - 3 )");
+                            numItem = in.nextInt();
+                        } while (numItem > this.matrizCardapio.length || numItem < 0);
 
                         if (numItem == 0) {
                             break;
@@ -378,8 +414,10 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int qtdItem;
         double valorUni;
 
-        System.out.println("Informe o numero do garçom para atendê-lo:");
-        garcom = in.nextInt();
+        do {
+            System.out.println("Informe o numero do garçom para atendê - lo: ( 1 - 5 )");;
+            garcom = in.nextInt();
+        } while (garcom > this.matrizGarcom.length || garcom < 1);
 
         Clientes xCliente = this.abrirContaBalcao(garcom);
         System.out.println("\nPEDIDO CLIENTE Nº" + xCliente.getNum() + ": ");
@@ -387,8 +425,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println("");
             System.out.println("NOVO PEDIDO - [0]Sair ");
             this.cardapio();
-            System.out.println("Numero do item: ");
-            numItem = in.nextInt();
+
+            do {
+                System.out.println("Numero do item: ( 0 - 3 )");
+                numItem = in.nextInt();
+            } while (numItem > this.matrizCardapio.length || numItem < 0);
 
             if (numItem == 0) {
                 break;
@@ -410,11 +451,20 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     void menuEditarBalcao() {
 
-        System.out.println("Digite o numero da conta ");
-        int numCliente = in.nextInt();
+        int numCliente, pedido, del;
+
+        do {
+            System.out.println("Digite o numero da conta:");
+            numCliente = in.nextInt();
+        } while (numCliente > this.bar.listaCliente.size() || numCliente < 1);
 
         Clientes xCliente = this.bar.getCliente(numCliente);
-        int pedido, del;
+        
+        if(xCliente.getStatusConta()==false){
+            System.out.println("Conta Fechada\n");
+            return;
+        }
+        
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
             System.out.println(".............[2]Deletar Item Pedido................--------------.");
@@ -430,8 +480,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         System.out.println("");
                         System.out.println("NOVO PEDIDO - [0]Sair ");
                         this.cardapio();
-                        System.out.println("Numero do item: ");
-                        numItem = in.nextInt();
+
+                        do {
+                            System.out.println("Numero do item: ( 0 - 3 )");
+                            numItem = in.nextInt();
+                        } while (numItem > this.matrizCardapio.length || numItem < 0);
 
                         if (numItem == 0) {
                             break;
