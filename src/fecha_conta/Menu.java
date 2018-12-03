@@ -198,6 +198,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
                     Mesa xMesa = this.getMesa(numMesa);
 
+                    if (xMesa.getStatus() == false) { //verificação de conta estiver fechada não é possivel fechar novamente
+                        System.out.println("Conta Fechada\n");
+                        return;
+                    }
+
                     double gorjetatemp;
                     for (Clientes aux : xMesa.tempClientes) { //loop de recebimento do valor da gorjeta para cada cliente
                         System.out.println("Digite o valor da Gorjeta");
@@ -214,12 +219,17 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                         numCliente = in.nextInt();
                     } while (numCliente > this.bar.listaCliente.size() || numCliente < 1);
 
-                    Clientes auxCliente = this.bar.getCliente(numCliente);
+                    Clientes xCliente = this.bar.getCliente(numCliente);
+
+                    if (xCliente.getStatusConta() == false) { //se conta estiver fechada, não é possivel fechar novamente
+                        System.out.println("Conta Fechada\n");
+                        return;
+                    }
 
                     double gorjetatemp;
                     System.out.println("Digite o valor da Gorjeta");
                     gorjetatemp = in.nextDouble(); // recebimento da gorjeta
-                    auxCliente.setGorjeta(gorjetatemp); //adicionando gorjeta ao cliente
+                    xCliente.setGorjeta(gorjetatemp); //adicionando gorjeta ao cliente
 
                     System.out.println("### FECHAMENTO DE CONTA ###");
 
