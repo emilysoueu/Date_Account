@@ -12,57 +12,50 @@ public class Mesa extends Service {
     private double totalMesa;//conta da mesa    
     private double tempGorjeta;
     ArrayList<Clientes> tempClientes;
-    //boolean statusMesa;//ocupa = true
-    //int[] tempClientes;
 
-    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa,double tempGorjeta, boolean status) {
+    Mesa(int abertaQtd, int fechadaQtd, int g, double gorjeta, int qtdClientes, int totalMesa, double tempGorjeta, boolean status) {
         super(abertaQtd, fechadaQtd, g, gorjeta, status);
         this.qtdClientes = qtdClientes;
         this.totalMesa = totalMesa; // total das contas de todos os clientes na mesa
-        this.tempGorjeta = tempGorjeta;        
+        this.tempGorjeta = tempGorjeta;
         this.tempClientes = new ArrayList<>();
-        //this.status = statusMesa; // saber se todas as pessoas estão estão com a contas fechadas
     }
 
-    /*public boolean getStatusMesa() {
-        return status;
-    }
-    public void setStatusMesa(boolean statusMesa) {
-        this.status = statusMesa;
-    }*/
+    //metodo para fecharconta mesa
     public void fecharContaMesa() {
-        this.setTotalMesa();
-        this.setGorjeta();
-        this.setTempGorjeta();
+        this.setTotalMesa(); //calcula o total da mesa somando o total de todos os clientes
+        this.setGorjeta(); // calcula gorjeta somando a gorjeta de todos os clientes
+        this.setTempGorjeta(); //calcula uma gorjeta temporaria
 
         System.out.println("### VALOR TOTAL MESA ###");
         System.out.println("Valor Total: " + this.totalMesa);
         System.out.println("Gorjeta Total: " + this.tempGorjeta);
         System.out.println("");
 
-        this.tempClientes.clear();
-        //this.status = false;
-        this.setStatus(false);
-        this.totalMesa = 0;
-        //this.gorjeta = 0;
-        this.zerarGorjeta();
-        this.qtdClientes = 0;
-        //this.garcom = 0;
-        this.setGarcom(0);
+        this.tempClientes.clear(); //limpa a lista de cliente de cada mesa
+        this.setStatus(false); //volta o valor padrao de mesa desocupada
+        this.totalMesa = 0; //zera o valor total da mesa
+        this.zerarGorjeta(); //zera a forjeta da mesa
+        this.qtdClientes = 0; //zera a quantidade de clientes
+        this.setGarcom(0); //volta o garcom pro padrão
     }
 
+    //acessa o atributo total de clientes
     public int getQtdClientes() {
         return qtdClientes;
     }
 
+    //altera o valor do atributo de numero de clientes
     public void setQtdClientes(int qtdClientes) {
         this.qtdClientes = qtdClientes;
     }
 
+    //acessa o valor total da mesa
     public double getTotalMesa() {
         return totalMesa;
     }
 
+    //calcula o valor total da mesa, somando o valor de cada cliente
     public void setTotalMesa() {
         for (Clientes aux : tempClientes) {
             this.totalMesa += aux.getTotal();
@@ -70,21 +63,22 @@ public class Mesa extends Service {
         this.totalMesa = totalMesa;
     }
 
+    //calcula o valor da gorjeta da mesa, somando a gorjeta de todos os clientes
     public void setTempGorjeta() {
         for (Clientes aux : this.tempClientes) {
             this.tempGorjeta += aux.getGorjeta();
         }
     }
 
-    @Override
+    @Override // função de impressão do dados da mesa
     public void print() {
         System.out.println("Mesa Ocupada: " + this.getStatus());
-        //System.out.println("Numero do Garcom: " + this.garcom);
         System.out.println("Numero do Garcom: " + this.getGarcom());
         System.out.println("Quantidade de Clientes: " + this.qtdClientes);
         System.out.println("");
     }
 
+    //impresa dos dados de cada cliente da mesa
     public void printClientesMesa() {
         int i = 1;
         System.out.println("");

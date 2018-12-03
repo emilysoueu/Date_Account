@@ -10,11 +10,11 @@ import java.util.Scanner;
  */
 public class Menu extends Restaurante {  // usar o mesmo construtor de Restaurante
 
-    Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) {
+    Menu(int numGarcom, int NumItens, int numMesas, double gorjetatotal, double pagamentototal, double totalrestaurante) { //construtor menu/restaurante
         super(numGarcom, NumItens, numMesas, gorjetatotal, pagamentototal, totalrestaurante);
     }
 
-    Scanner in = new Scanner(System.in);
+    Scanner in = new Scanner(System.in); //entrada de dados
 
     public void menu() {
         int menu, user, manager;
@@ -27,23 +27,15 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             user = in.nextInt();
 
             switch (user) {
-                // Interface Gerente
                 case 1: {
-
-                    menuManager();
-
-                }// fim case 1
+                    menuManager(); // Interface Gerente
+                }
                 break;
-
-                // Interface Cliente
                 case 2: {
-
-                    menuClient();
-
-                }//fim case 2
+                    menuClient(); // Interface Cliente
+                }
                 break;
-
-            }// fim switchc user
+            }
         } while (user != 0);
     }
 
@@ -58,16 +50,13 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             manager = in.nextInt();
 
             switch (manager) {
-                // descrição de uma mesa especifica
                 case 1: {
-                    menuDescricao();
+                    menuDescricao(); //menu para descrições
                 }
                 break;
-                //descrição do balcão
                 case 2: {
-                    menuRelatorio();
+                    menuRelatorio(); //menu para emissao de relatorio
                 }
-
                 break;
             }
         } while (manager != 0);
@@ -85,9 +74,9 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             manager = in.nextInt();
 
             switch (manager) {
-                // descrição de uma mesa especifica
-                case 1: {
-                    do {
+                case 1: { // descrição de uma mesa especifica
+
+                    do { //loop de recebimento de numero da mesa válido
                         System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
                         numMesa = in.nextInt();
                     } while (numMesa > this.listaMesa.size() || numMesa < 1);
@@ -96,14 +85,12 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                     aux.print();
                 }
                 break;
-                //descrição do balcão
-                case 2: {
-                    //this.getBar(); // não sei o que essa função faz exatamente
+
+                case 2: { //descrição do balcão
                     this.bar.print();
                 }
                 break;
-                // descrição de todas as mesas e do balcão
-                case 3: {
+                case 3: { // descrição de todas as mesas e do balcão
                     this.descricao();
                 }
                 break;
@@ -113,7 +100,7 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
 
     void menuRelatorio() {
         int manager = 0;
-        //int numMesa;
+
         do {
             System.out.println(".............Restaurante Poneis Dourados..........................");
             System.out.println(".............[1]Contas em Aberto..................................");
@@ -123,18 +110,16 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             manager = in.nextInt();
 
             switch (manager) {
-                // relatorio de contas em aberto
-                case 1: {
+
+                case 1: { // relatorio de contas em aberto
                     this.relatorioAberto();
                 }
                 break;
-                // relatorio do total arrecardado no dia
-                case 2: {
+                case 2: { // relatorio do total arrecardado no dia
                     this.relatorioFinal();
                 }
                 break;
-                // relatorio do total a cada garcom
-                case 3: {
+                case 3: { // relatorio do total a cada garcom
                     this.relatorioGarcom();
                 }
             }
@@ -153,16 +138,15 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             menu = in.nextInt();
             switch (menu) {
 
-                case 1: {
+                case 1: { //menu para abertura de conta
                     menuAbrirConta();
                 }
                 break;
-                // atendimmento em balcao
-                case 2: {
+                case 2: { // menu para fechamento de conta
                     menuFecharConta();
                 }
                 break;
-                case 3: {
+                case 3: { //menu para edição de conta
                     menuEditarConta();
                 }
                 break;
@@ -180,11 +164,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[0]Voltar............................................");
             menu = in.nextInt();
             switch (menu) {
-                case 1: {
+                case 1: { //menu para abertura de conta do tipo mesa
                     menuMesa();
                 }
                 break;
-                case 2: {
+                case 2: { // menu para abertura de conta no balcao
                     menuBalcao();
                 }
                 break;
@@ -203,45 +187,45 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[2]Balcão............................................");
             System.out.println(".............[0]Voltar............................................");
             menu = in.nextInt();
+
             switch (menu) {
                 case 1: {
 
-                    do {
+                    do { //loop de recebimento de numero da mesa válido
                         System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
                         numMesa = in.nextInt();
                     } while (numMesa > this.listaMesa.size() || numMesa < 1);
 
                     Mesa xMesa = this.getMesa(numMesa);
+
                     double gorjetatemp;
-                    for (Clientes aux : xMesa.tempClientes) {
+                    for (Clientes aux : xMesa.tempClientes) { //loop de recebimento do valor da gorjeta para cada cliente
                         System.out.println("Digite o valor da Gorjeta");
                         gorjetatemp = in.nextDouble();
                         aux.setGorjeta(gorjetatemp);
                     }
-                    this.fecharContaMesa(numMesa);
+                    this.fecharContaMesa(numMesa); //chama fechamento da conta da mesa escolhida
                 }
                 break;
                 case 2: {
-                    System.out.println(".............Informe o numero da conta:..................");
-                    numCliente = in.nextInt();                   
 
-                    do {
+                    do { // loop de recebimento do numero da conta valido
                         System.out.println("Digite o numero da conta:");
                         numCliente = in.nextInt();
                     } while (numCliente > this.bar.listaCliente.size() || numCliente < 1);
 
                     Clientes auxCliente = this.bar.getCliente(numCliente);
-                    double gorjetatemp;
 
+                    double gorjetatemp;
                     System.out.println("Digite o valor da Gorjeta");
-                    gorjetatemp = in.nextDouble();
-                    auxCliente.setGorjeta(gorjetatemp);
+                    gorjetatemp = in.nextDouble(); // recebimento da gorjeta
+                    auxCliente.setGorjeta(gorjetatemp); //adicionando gorjeta ao cliente
+
                     System.out.println("### FECHAMENTO DE CONTA ###");
 
-                    //this.fecharContaBalcao(numCliente, gorjetatemp); //======== FECHANDO A CONTA DUAS VEZES ========//
-                    this.fecharContaBalcao(numCliente, gorjetatemp); //======== FILES ========//
+                    this.fecharContaBalcao(numCliente, gorjetatemp); //fechamento da conta do cliente e sua gotjeta
 
-                    int listaAberto = this.bar.getTotalAberto();
+                    int listaAberto = this.bar.getTotalAberto(); //verificação se o numero de contas aberta é igual a 0 para setar obalcao como vazio
                     if (listaAberto == 0) {
                         this.bar.setStatus(false);
                     }
@@ -261,11 +245,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             System.out.println(".............[0]Voltar............................................");
             menu = in.nextInt();
             switch (menu) {
-                case 1: {
+                case 1: { //menu para edição de conta mesa
                     menuEditarMesa();
                 }
                 break;
-                case 2: {
+                case 2: { //menu para edição de conta balcao
                     menuEditarBalcao();
                 }
                 break;
@@ -278,82 +262,82 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int garcom;
         int numMesa;
 
-        int numItem; // recebe pedidos do cliente
+        int numItem;
         int qtdItem;
         double valorUni;
 
         System.out.println("Informe a quantidade de Clientes na mesa:");
-        qtdCliente = in.nextInt();
+        qtdCliente = in.nextInt(); //recebimento do numero de cliente na mesa
 
-        do {
+        do { //loop para escolha de um garcom valido
             System.out.println("Informe o numero do garçom para atendê - lo: ( 1 - 5 )");;
             garcom = in.nextInt();
         } while (garcom > this.matrizGarcom.length || garcom < 1);
 
-        do {
+        do { // loop para escolhar de uma mesa valida
             System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
             numMesa = in.nextInt();
         } while (numMesa > this.listaMesa.size() || numMesa < 1);
 
-        Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa);
-        xMesa.setGarcom(garcom);
-        xMesa.setQtdClientes(qtdCliente);
+        Mesa xMesa = this.abrirContaMesa(qtdCliente, garcom, numMesa); //instaciação de uma mesa
+        xMesa.setGarcom(garcom); //seta o garcomo da mesa apartir do primeiro cliente
+        xMesa.setQtdClientes(qtdCliente); //seta a quantidade de clientes nos dados da mesa
 
-        for (Clientes aux : xMesa.tempClientes) {
+        for (Clientes aux : xMesa.tempClientes) { //loop para realizar pedido para cada cliente da mesa
             System.out.println("\nPEDIDO CLIENTE Nº" + aux.getNum() + ": ");
 
-            do {
+            do { //loop que permite um cliente realizar quantos pedidos desejar
                 System.out.println("");
                 System.out.println("NOVO PEDIDO - [0]Sair ");
-                this.cardapio();
+                this.cardapio(); //instanciando cardápio
 
-                do {
+                do { //loop de escolhar de um item válido
                     System.out.println("Numero do item: ( 0 - 3 )");
                     numItem = in.nextInt();
                 } while (numItem > this.matrizCardapio.length || numItem < 0);
 
-                if (numItem == 0) {
+                if (numItem == 0) { //encerramento do pedido
                     break;
                 }
 
                 System.out.println("Quantidade do item: ");
-                qtdItem = in.nextInt();
+                qtdItem = in.nextInt(); //recebimento da quantidade de items
 
-                valorUni = this.matrizCardapio[numItem - 1];
+                valorUni = this.matrizCardapio[numItem - 1]; //acessa o cardário no item especificado para pegar preço
 
-                aux.addPedido(numItem, qtdItem, valorUni);
+                aux.addPedido(numItem, qtdItem, valorUni); //adicionar o predido criado no arraylist de pedidos do cliente
 
-                aux.printPedido();
+                aux.printPedido(); //imprimite o pedido feito
 
             } while (numItem != 0);
         }
 
         System.out.println("### MESA ATENDIDA ###");
-        xMesa.print();
+        xMesa.print(); //imprimite dados da mesa atendida
     }
 
     void menuEditarMesa() {
         int numMesa;
         int numCliente;
 
-        do {
+        do { //escolha de uma mesa valida
             System.out.println("Informe o numero da mesa: ( 1 - 10 ) ");
             numMesa = in.nextInt();
         } while (numMesa > this.listaMesa.size() || numMesa < 1);
 
-        Mesa xMesa = this.listaMesa.get(numMesa - 1);
-        
-        if(xMesa.getStatus() == false){
+        Mesa xMesa = this.listaMesa.get(numMesa - 1); //pega mesa valida
+
+        if (xMesa.getStatus() == false) { //verificação de conta esta aberta para continuar a modificar
             System.out.println("Conta Fechada\n");
             return;
         }
 
-        do {
+        do { //escolhar de conta valida
             System.out.println("Digite o numero da conta:");
             numCliente = in.nextInt();
         } while (numCliente > xMesa.tempClientes.size() || numCliente < 1);
 
-        Clientes xCliente = xMesa.tempClientes.get(numCliente - 1);
+        Clientes xCliente = xMesa.tempClientes.get(numCliente - 1); //pega cliente especifico
 
         int pedido, del;
         do {
@@ -363,46 +347,46 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             pedido = in.nextInt();
             switch (pedido) {
 
-                case 1: {
-                    int numItem; // recebe pedidos do cliente
+                case 1: { //adicionar pedido
+                    int numItem;
                     int qtdItem;
                     double valorUni;
                     do {
                         System.out.println("");
                         System.out.println("NOVO PEDIDO - [0]Sair ");
-                        this.cardapio();
+                        this.cardapio(); //instanciar cardapior
 
-                        do {
+                        do { //escolhar de um intem valido do cardápio
                             System.out.println("Numero do item: ( 0 - 3 )");
                             numItem = in.nextInt();
                         } while (numItem > this.matrizCardapio.length || numItem < 0);
 
-                        if (numItem == 0) {
+                        if (numItem == 0) { //encerra pedido
                             break;
                         }
 
                         System.out.println("Quantidade do item: ");
-                        qtdItem = in.nextInt();
+                        qtdItem = in.nextInt(); //aicionar quantidade do item
 
-                        valorUni = this.matrizCardapio[numItem - 1];
+                        valorUni = this.matrizCardapio[numItem - 1]; //pega valor unitario da matrizcardápio
 
-                        xCliente.addPedido(numItem, qtdItem, valorUni);
-                        xCliente.printPedido();
+                        xCliente.addPedido(numItem, qtdItem, valorUni); //adicionar pedido na lista de pedidos
+                        xCliente.printPedido(); //imprimide pedido
 
                     } while (numItem != 0);
                 }
                 break;
-                case 2: {
+                case 2: { //deleta pedido
                     System.out.println("\n..............Informe o numero do Item:......");
-                    del = in.nextInt();
+                    del = in.nextInt(); //deleta o item se o item existir
                     xCliente.delItem(del);
                 }
                 break;
             }
 
             System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
-            xCliente.printCliente();
-            xCliente.printPedido();
+            xCliente.printCliente(); //imprimite dados do cliente
+            xCliente.printPedido(); //imprimite dados do pedido
 
         } while (pedido != 0);
     }
@@ -414,57 +398,58 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         int qtdItem;
         double valorUni;
 
-        do {
+        do { //escolhar de um cargom válido
             System.out.println("Informe o numero do garçom para atendê - lo: ( 1 - 5 )");;
             garcom = in.nextInt();
         } while (garcom > this.matrizGarcom.length || garcom < 1);
 
-        Clientes xCliente = this.abrirContaBalcao(garcom);
+        Clientes xCliente = this.abrirContaBalcao(garcom); //abertura de uma conta
+
         System.out.println("\nPEDIDO CLIENTE Nº" + xCliente.getNum() + ": ");
         do {
             System.out.println("");
             System.out.println("NOVO PEDIDO - [0]Sair ");
-            this.cardapio();
+            this.cardapio(); //instancia o cardápio
 
-            do {
+            do { //loop para escolhar de um item valido do cardápio
                 System.out.println("Numero do item: ( 0 - 3 )");
                 numItem = in.nextInt();
             } while (numItem > this.matrizCardapio.length || numItem < 0);
 
-            if (numItem == 0) {
+            if (numItem == 0) { //encerra o pedido
                 break;
             }
 
             System.out.println("Quantidade do item: ");
-            qtdItem = in.nextInt();
+            qtdItem = in.nextInt(); //recebe a quantidade de cada item
 
-            valorUni = this.matrizCardapio[numItem - 1];
+            valorUni = this.matrizCardapio[numItem - 1]; //pega-se o valor unitário de cada item do cardápio em especifico
 
-            xCliente.addPedido(numItem, qtdItem, valorUni);
-            xCliente.printPedido();
+            xCliente.addPedido(numItem, qtdItem, valorUni); //adicionar pedido
+            xCliente.printPedido(); //imprimi pedido
 
         } while (numItem != 0);
 
         System.out.println("### CLIENTE ATENDIDO ###");
-        xCliente.printCliente();
+        xCliente.printCliente(); //imprimite dados do cliente
     }
 
     void menuEditarBalcao() {
 
         int numCliente, pedido, del;
 
-        do {
+        do { //loop para escolhar de uma conta valida
             System.out.println("Digite o numero da conta:");
             numCliente = in.nextInt();
         } while (numCliente > this.bar.listaCliente.size() || numCliente < 1);
 
-        Clientes xCliente = this.bar.getCliente(numCliente);
-        
-        if(xCliente.getStatusConta()==false){
+        Clientes xCliente = this.bar.getCliente(numCliente); //pega-se o cliente em especifico
+
+        if (xCliente.getStatusConta() == false) { //se conta estiver fechada, não é possivel editar
             System.out.println("Conta Fechada\n");
             return;
         }
-        
+
         do {
             System.out.println(".............[1]Adicionar Pedido ..............--------------.....");
             System.out.println(".............[2]Deletar Item Pedido................--------------.");
@@ -473,30 +458,30 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
             switch (pedido) {
 
                 case 1: {
-                    int numItem; // recebe pedidos do cliente
+                    int numItem;
                     int qtdItem;
                     double valorUni;
                     do {
                         System.out.println("");
                         System.out.println("NOVO PEDIDO - [0]Sair ");
-                        this.cardapio();
+                        this.cardapio(); //instancia cardápio
 
-                        do {
+                        do { //loop de escolhar de um item do cardápio valido
                             System.out.println("Numero do item: ( 0 - 3 )");
                             numItem = in.nextInt();
                         } while (numItem > this.matrizCardapio.length || numItem < 0);
 
-                        if (numItem == 0) {
+                        if (numItem == 0) { //encerra pedido
                             break;
                         }
 
                         System.out.println("Quantidade do item: ");
-                        qtdItem = in.nextInt();
+                        qtdItem = in.nextInt(); //adicionar a quantidade do item
 
-                        valorUni = this.matrizCardapio[numItem - 1];
+                        valorUni = this.matrizCardapio[numItem - 1]; //pega-se valor unitário do item da matriz cardápio
 
-                        xCliente.addPedido(numItem, qtdItem, valorUni);
-                        xCliente.printPedido();
+                        xCliente.addPedido(numItem, qtdItem, valorUni); //adicionar pedido
+                        xCliente.printPedido(); //imprimi pedido
 
                     } while (numItem != 0);
                 }
@@ -504,14 +489,14 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
                 case 2: {
                     System.out.println("\n..............Informe o numero do Item:......");
                     del = in.nextInt();
-                    xCliente.delItem(del);
+                    xCliente.delItem(del); //deleta item se o item estiver na lista
                 }
                 break;
             }
 
             System.out.println("### CLIENTE ATENDIDO - PEDIDO COM ALTERAÇÃO ###");
-            xCliente.printCliente();
-            xCliente.printPedido();
+            xCliente.printCliente(); //imprime dados do cliente
+            xCliente.printPedido(); //imprimite dados do cliente
 
         } while (pedido != 0);
     }
@@ -519,7 +504,6 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
     @Override
     public String toString() {
         String bos = "";
-        //double totalrestauranteaux;
 
         bos += "Relatórios";
         bos += "\n\n\n";
@@ -530,19 +514,17 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         bos += "RELATORIO POR MESA:";
         bos += "\n";
         int i = 1;
+
         for (Mesa aux : this.listaMesa) {
             //aux.setGorjeta();
             bos += "Gorjeta Mesa " + i++ + ": " + aux.getGorjeta() + "   | Pagamentos: " + aux.getTotal();
             bos += "\n";
-            //this.gorjetatotal += aux.getGorjeta();
-            //this.setGorjetatotal(aux.getGorjeta());
-            //this.pagamentototal += aux.getTotal();
-            //this.setPagamentototal(aux.getTotal());
         }
 
         bos += "\n\n\n";
         bos += "RELATORIO GARÇOM";
         bos += "\n";
+
         for (i = 0; i < 5; i++) {
             bos += "Gorjeta Garcom Nº" + (i + 1) + ": " + matrizGarcom[i];
             bos += "\n";
@@ -552,17 +534,11 @@ public class Menu extends Restaurante {  // usar o mesmo construtor de Restauran
         bos += "TOTAL";
         bos += "\n\n\n";
         bos += "Total Restaurante Poneis Dourados";
-        //bos += this.totalrestaurante = this.gorjetatotal + this.pagamentototal;
-        //totalrestauranteaux = this.getGorjetatotal() + this.getPagamentototal();
-
-        //bos += this.setTotalrestaurante(totalrestauranteaux);
         bos += "\n";
         bos += "Total Diário (Pagamentos): " + this.getPagamentototal();
         bos += "\n";
-        //bos += "Total Diário (Gorjeta): " + this.gorjetatotal;
         bos += "Total Diário (Gorjeta): " + this.getGorjetatotal();
         bos += "\n";
-        //bos += "Total Diário (Pagamentos + Gorjeta): " + this.totalrestaurante;
         bos += "Total Diário (Pagamentos + Gorjeta): " + this.getTotalrestaurante();
         bos += "\n";
 

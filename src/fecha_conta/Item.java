@@ -18,6 +18,7 @@ public class Item {
         this.valorTot = valorTot;
     }
 
+    //metodos de acesso e alteração dos atributos privado num de itens, quantidade de item, valor unitario e valor total de cada pedido
     public int getNumItem() {
         return numItem;
     }
@@ -50,6 +51,7 @@ public class Item {
         this.valorTot = this.numItem * this.valorUni;
     }
 
+    //metodo de impressao de um pedido em especifico
     public void printItem() {
         System.out.println("Numero do item: " + this.numItem);
         System.out.println("Quantidade do item: " + this.qtdItem);
